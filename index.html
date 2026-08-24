@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Creative Strategy OS — Jakob Counts</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50' y='57' text-anchor='middle' dominant-baseline='central' font-size='88'>⚜️</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23141518'/><text x='50' y='57' text-anchor='middle' dominant-baseline='central' font-size='68'>⚜️</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -105,6 +105,30 @@
   }
   .locked-box{margin:12px 17px 16px;padding:18px;background:#fffbec;border:1px dashed #e8d9a8;border-radius:11px;text-align:center}
   .locked-box p{font-size:12.5px;color:#6b5310;margin-bottom:10px;line-height:1.5}
+  /* ---- password modal ---- */
+  .pw-overlay{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(12,14,17,.58);backdrop-filter:blur(7px);padding:20px}
+  .pw-overlay.show{display:flex}
+  .pw-modal{position:relative;width:100%;max-width:400px;background:#fff;border-radius:22px;padding:36px 32px 26px;text-align:center;box-shadow:0 30px 90px rgba(0,0,0,.4);animation:pwIn .28s cubic-bezier(.2,.9,.3,1.15);overflow:hidden}
+  .pw-modal::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#8a6d1f,#e6c76a,#8a6d1f)}
+  @keyframes pwIn{from{opacity:0;transform:translateY(16px) scale(.95)}to{opacity:1;transform:none}}
+  .pw-icon{width:68px;height:68px;margin:0 auto 16px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#2e3238,#131518);display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 10px 24px rgba(0,0,0,.28),inset 0 0 0 1.5px rgba(212,175,55,.45)}
+  .pw-modal h3{font-size:19px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+  .pw-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-top:8px}
+  .pw-field{position:relative;margin-top:22px}
+  .pw-field input{width:100%;border:1.5px solid var(--border-hi);border-radius:12px;padding:13px 46px 13px 16px;font-size:15px;font-family:inherit;outline:none;color:var(--ink);background:var(--bg);letter-spacing:.05em;transition:.15s}
+  .pw-field input:focus{border-color:var(--ink);background:#fff;box-shadow:0 0 0 3px rgba(31,35,40,.08)}
+  .pw-eye{position:absolute;right:5px;top:50%;transform:translateY(-50%);border:none;background:none;cursor:pointer;font-size:16px;padding:8px 10px;opacity:.5;transition:.15s}
+  .pw-eye:hover{opacity:1}
+  .pw-err{display:none;margin-top:12px;font-size:12.5px;font-weight:600;color:#c0392b}
+  .pw-err.show{display:block}
+  .pw-modal.shake{animation:pwShake .4s}
+  @keyframes pwShake{0%,100%{transform:none}20%,60%{transform:translateX(-9px)}40%,80%{transform:translateX(9px)}}
+  .pw-submit{width:100%;margin-top:18px;border:none;border-radius:12px;padding:14px;font-size:14.5px;font-weight:700;font-family:inherit;color:#fff;cursor:pointer;background:linear-gradient(135deg,#24292f,#3d434c);box-shadow:0 6px 18px rgba(31,35,40,.28);transition:.15s}
+  .pw-submit:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(31,35,40,.34)}
+  .pw-submit:disabled{opacity:.65;cursor:default;transform:none}
+  .pw-cancel{margin-top:13px;border:none;background:none;font-family:inherit;font-size:12.5px;color:var(--dim);cursor:pointer}
+  .pw-cancel:hover{color:var(--muted)}
+  .pw-remember{margin-top:14px;font-size:11.5px;color:var(--dim)}
   .tags-row{margin:0 17px 0;padding-top:10px}
   .tag{display:inline-block;font-size:10.5px;padding:3px 9px;border-radius:999px;border:1px solid var(--border);color:var(--dim);letter-spacing:.04em;background:var(--bg2);margin-right:5px}
   .tag.hot{border-color:#e0cf96;color:#8a6d1f;background:#fffbec}
@@ -203,6 +227,22 @@
     Creative Strategy OS — Jakob Counts · thư viện 82 assets · bản diễn giải tiếng Việt<br>
     nội dung đầy đủ được mã hóa AES-256 — chỉ mở được bằng mật khẩu của chủ thư viện · nội dung gốc thuộc về tác giả
   </footer>
+</div>
+
+<div class="pw-overlay" id="pwOverlay" onclick="if(event.target===this)closePwModal()">
+  <div class="pw-modal" id="pwModal">
+    <div class="pw-icon">⚜️</div>
+    <h3>Nội dung được bảo vệ</h3>
+    <p class="pw-desc">Toàn bộ 82 prompts &amp; skills được mã hóa AES-256.<br>Nhập mật khẩu để mở khóa thư viện.</p>
+    <div class="pw-field">
+      <input type="password" id="pwInput" placeholder="Nhập mật khẩu..." autocomplete="off">
+      <button type="button" class="pw-eye" onclick="togglePwVis(this)" title="Hiện / ẩn mật khẩu">👁️</button>
+    </div>
+    <div class="pw-err" id="pwErr">Sai mật khẩu rồi anh, thử lại nha.</div>
+    <button class="pw-submit" id="pwSubmit" onclick="submitPw()">🔓 Mở khóa thư viện</button>
+    <div><button class="pw-cancel" onclick="closePwModal()">Để sau</button></div>
+    <div class="pw-remember">Chỉ cần nhập một lần — trình duyệt sẽ tự nhớ cho những lần sau</div>
+  </div>
 </div>
 
 <script>
@@ -411,7 +451,7 @@ async function tryUnlock(pw){
   const pt=await crypto.subtle.decrypt({name:"AES-GCM",iv:b64(enc.iv)},key,b64(enc.ct));
   return JSON.parse(new TextDecoder().decode(pt));
 }
-async function unlockWith(pw,interactive){
+async function unlockWith(pw){
   const btn=document.getElementById("lockBtn");
   btn.textContent="⏳ Đang mở...";
   try{
@@ -421,20 +461,50 @@ async function unlockWith(pw,interactive){
     btn.classList.add("open-state");
     btn.onclick=null;
     document.querySelectorAll(".item.open").forEach(fillBody);
+    return true;
   }catch(e){
     try{ localStorage.removeItem("jk_pw"); }catch(e2){}
     btn.textContent="🔒 Mở khóa nội dung";
-    if(interactive) alert("Sai mật khẩu rồi anh, thử lại nha.");
+    return false;
   }
 }
 function unlockFlow(){
-  const pw=window.prompt("Nhập mật khẩu để mở nội dung đầy đủ:");
-  if(pw) unlockWith(pw,true);
+  document.getElementById("pwErr").classList.remove("show");
+  document.getElementById("pwOverlay").classList.add("show");
+  const inp=document.getElementById("pwInput");
+  inp.value="";
+  setTimeout(()=>inp.focus(),80);
 }
+function closePwModal(){ document.getElementById("pwOverlay").classList.remove("show"); }
+function togglePwVis(btn){
+  const inp=document.getElementById("pwInput");
+  inp.type = inp.type==="password" ? "text" : "password";
+  btn.textContent = inp.type==="password" ? "👁️" : "🙈";
+  inp.focus();
+}
+async function submitPw(){
+  const inp=document.getElementById("pwInput");
+  const pw=inp.value.trim();
+  if(!pw){ inp.focus(); return; }
+  const sub=document.getElementById("pwSubmit");
+  sub.disabled=true; sub.textContent="⏳ Đang mở khóa...";
+  const ok=await unlockWith(pw);
+  sub.disabled=false; sub.textContent="🔓 Mở khóa thư viện";
+  if(ok){
+    closePwModal();
+  }else{
+    document.getElementById("pwErr").classList.add("show");
+    const m=document.getElementById("pwModal");
+    m.classList.remove("shake"); void m.offsetWidth; m.classList.add("shake");
+    inp.select();
+  }
+}
+document.getElementById("pwInput").addEventListener("keydown",e=>{ if(e.key==="Enter") submitPw(); });
+window.addEventListener("keydown",e=>{ if(e.key==="Escape") closePwModal(); });
 window.addEventListener("load",()=>{
   let s=null;
   try{ s=localStorage.getItem("jk_pw"); }catch(e){}
-  if(s) unlockWith(s,false);
+  if(s) unlockWith(s);
 });
 
 /* ---------- search & filter ---------- */
