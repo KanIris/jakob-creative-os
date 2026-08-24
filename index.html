@@ -14,6 +14,13 @@
     --accent:#7a5a28; --accent2:#a8842a; --accent-soft:#f7f1e1;
     --ink:#26211a; --text:#2b261d; --muted:#6b6353; --dim:#97907f;
   }
+  html[data-theme="dark"]{
+    --bg:#0d0d0f; --bg2:#16161b; --card:#17171d; --card2:#121217;
+    --border:#2a2a33; --border-hi:#4a4130;
+    --accent:#d4af37; --accent2:#c9a13b; --accent-soft:#221d10;
+    --ink:#f0e8d0; --text:#d6cfbd; --muted:#a29a83; --dim:#6f695b;
+    color-scheme:dark;
+  }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
@@ -158,8 +165,39 @@
   }
   .totop.show{opacity:1;visibility:visible;transform:translateY(0)}
   .totop:hover{filter:brightness(1.15);transform:translateY(-2px)}
+  .bulb{
+    position:fixed;left:22px;bottom:22px;z-index:60;
+    width:46px;height:46px;border-radius:50%;cursor:pointer;
+    border:1px solid var(--border-hi);background:var(--card);
+    font-size:20px;line-height:1;font-family:inherit;
+    box-shadow:0 6px 18px rgba(0,0,0,.18);transition:.25s;
+  }
+  .bulb:hover{transform:translateY(-2px);border-color:var(--accent)}
+  .bulb .ic{display:inline-block;transition:.25s}
+  html[data-theme="dark"] .bulb .ic{filter:grayscale(1) brightness(.7)}
+  /* ---- dark theme (đèn tắt — nền đen vàng) ---- */
+  html[data-theme="dark"] header{background:rgba(13,13,15,.92)}
+  html[data-theme="dark"] .logo{background:#131518;box-shadow:inset 0 0 0 1.5px rgba(212,175,55,.45)}
+  html[data-theme="dark"] h1 .accent{background:linear-gradient(135deg,#f0d37a,#c9a13b);-webkit-background-clip:text;background-clip:text}
+  html[data-theme="dark"] .stat:hover{border-color:#574925;box-shadow:0 8px 20px rgba(0,0,0,.45)}
+  html[data-theme="dark"] .fbtn:hover{border-color:#574925}
+  html[data-theme="dark"] .fbtn.on{color:#1a1508}
+  html[data-theme="dark"] .fbtn.lock{border-color:#4a4130;background:#221d10;color:#d9b95c}
+  html[data-theme="dark"] .fbtn.lock.open-state{border-color:#2d5a3c;background:#10251a;color:#63c98d}
+  html[data-theme="dark"] .item:hover{border-color:#574925}
+  html[data-theme="dark"] .cbtn.alt{border-color:#574925}
+  html[data-theme="dark"] .std-hint{color:#d9b95c;background:#221d10;border-color:#4a4130}
+  html[data-theme="dark"] pre.content{background:#101015;color:#cfc8b6}
+  html[data-theme="dark"] .locked-box{background:#221d10;border-color:#4a4130}
+  html[data-theme="dark"] .locked-box p{color:#d9b95c}
+  html[data-theme="dark"] .tag.hot{border-color:#574925;color:#d4af37;background:#221d10}
+  html[data-theme="dark"] .note{background:#221d10;border-color:#4a4130;color:#d9b95c}
+  html[data-theme="dark"] .pw-modal{background:#1a1a21}
+  html[data-theme="dark"] .pw-field input:focus{background:#101015;box-shadow:0 0 0 3px rgba(212,175,55,.12)}
+  html[data-theme="dark"] .pw-err{color:#e26a5a}
   @media (max-width:640px){ .sec-head .badge{display:none} .charcount{display:none} .toolbar{position:static} }
 </style>
+<script>try{if(localStorage.getItem("jk_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
 </head>
 <body>
 
@@ -249,6 +287,7 @@
 </div>
 
 <button class="totop" id="toTop" title="Về đầu trang" aria-label="Về đầu trang" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<button class="bulb" id="bulbBtn" title="Bật / tắt đèn — đổi giao diện sáng · tối" aria-label="Đổi giao diện sáng tối"><span class="ic">💡</span></button>
 
 <div class="pw-overlay" id="pwOverlay" onclick="if(event.target===this)closePwModal()">
   <div class="pw-modal" id="pwModal">
@@ -637,6 +676,13 @@ document.getElementById("q").addEventListener("keydown",e=>{ if(e.key==="Enter")
 document.querySelectorAll(".fbtn").forEach(b=>{ if(b.dataset.f) b.addEventListener("click",()=>setFilter(b.dataset.f)); });
 const toTopBtn=document.getElementById("toTop");
 window.addEventListener("scroll",()=>{ toTopBtn.classList.toggle("show",window.scrollY>400); },{passive:true});
+/* ---------- theme toggle (bóng đèn) ---------- */
+document.getElementById("bulbBtn").addEventListener("click",()=>{
+  const dark=document.documentElement.getAttribute("data-theme")==="dark";
+  if(dark) document.documentElement.removeAttribute("data-theme");
+  else document.documentElement.setAttribute("data-theme","dark");
+  try{ localStorage.setItem("jk_theme",dark?"light":"dark"); }catch(e){}
+});
 apply();
 </script>
 </body>
