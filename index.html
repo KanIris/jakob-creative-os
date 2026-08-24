@@ -35,48 +35,48 @@
     border-bottom:1px solid var(--border);
   }
   .nav{display:flex;align-items:center;gap:12px;padding:14px 0}
-  .logo{width:34px;height:34px;border-radius:9px;background:var(--ink);display:flex;align-items:center;justify-content:center;font-size:18px}
-  .nav b{font-weight:700;font-size:15px;color:var(--ink)}
-  .nav .links{margin-left:auto;display:flex;gap:18px;font-size:13px}
+  .logo{width:34px;height:34px;border-radius:9px;background:var(--ink);display:flex;align-items:center;justify-content:center;font-size:19px}
+  .nav b{font-weight:700;font-size:16px;color:var(--ink)}
+  .nav .links{margin-left:auto;display:flex;gap:18px;font-size:14px}
   .nav .links a{color:var(--muted);text-decoration:none;font-weight:500}
   .nav .links a:hover{color:var(--ink)}
   .hero{text-align:center;padding:52px 0 8px}
-  .hero-emblem{width:56px;height:56px;margin:0 auto 18px;border-radius:15px;background:radial-gradient(circle at 35% 28%,#2e3238,#131518);display:flex;align-items:center;justify-content:center;font-size:27px;box-shadow:0 8px 22px rgba(0,0,0,.22),inset 0 0 0 1.5px rgba(212,175,55,.4)}
-  h1{font-size:clamp(28px,5vw,46px);font-weight:800;letter-spacing:-.01em;color:var(--ink)}
-  h1 .accent{background:linear-gradient(135deg,#6d5122,#b08a2e);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .sub{margin-top:10px;color:var(--muted);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+  h1{font-size:clamp(30px,5.5vw,50px);font-weight:800;letter-spacing:-.01em;color:var(--ink)}
+  .rgb{background:linear-gradient(90deg,#e8442e,#f5a623,#1fb56b,#2e9be8,#8b5cf6,#e8442e);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:rgbFlow 6s linear infinite}
+  @keyframes rgbFlow{to{background-position:200% center}}
+  .sub{margin-top:12px;color:var(--accent);font-size:17px;letter-spacing:.16em;text-transform:uppercase;font-weight:800}
   .meta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px}
-  .chip{border:1px solid var(--border);background:var(--card);border-radius:999px;padding:7px 15px;font-size:12.5px;color:var(--muted)}
+  .chip{border:1px solid var(--border);background:var(--card);border-radius:999px;padding:7px 15px;font-size:13.5px;color:var(--muted)}
   .chip .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#2da062;margin-right:6px}
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:34px auto 0;max-width:760px}
   .stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px 10px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.04);cursor:pointer;transition:.15s}
   .stat:hover{transform:translateY(-2px);border-color:#d2c19c;box-shadow:0 8px 20px rgba(122,90,40,.12)}
-  .stat b{display:block;font-size:32px;font-weight:800;color:var(--ink)}
-  .stat span{font-size:11px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;font-weight:500}
+  .stat b{display:block;font-size:33px;font-weight:800;color:var(--ink)}
+  .stat span{font-size:12px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;font-weight:500}
   .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:44px 0 0;position:sticky;top:63px;z-index:40;background:var(--bg);padding:10px 0}
   .search{flex:1;min-width:220px;position:relative}
   .search input{
     width:100%;background:var(--card);border:1px solid var(--border);border-radius:11px;
-    padding:12px 16px 12px 40px;color:var(--text);font-size:14px;font-family:inherit;outline:none;
+    padding:12px 16px 12px 40px;color:var(--text);font-size:15px;font-family:inherit;outline:none;
     box-shadow:0 1px 4px rgba(0,0,0,.03);
   }
   .search input:focus{border-color:var(--accent)}
-  .search::before{content:'🔍';position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:13px;opacity:.6}
+  .search::before{content:'🔍';position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:14px;opacity:.6}
   .filters{display:flex;flex-wrap:wrap;gap:8px}
-  .fbtn{background:var(--card);border:1px solid var(--border);border-radius:999px;padding:8px 15px;font-size:12.5px;color:var(--muted);cursor:pointer;font-family:inherit;transition:.15s;font-weight:500}
+  .fbtn{background:var(--card);border:1px solid var(--border);border-radius:999px;padding:8px 15px;font-size:13.5px;color:var(--muted);cursor:pointer;font-family:inherit;transition:.15s;font-weight:500}
   .fbtn:hover{border-color:#d2c19c;color:var(--accent)}
   .fbtn.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
   .fbtn.lock{border-color:#d8c88f;background:#fffbec;color:#6b5310}
   .fbtn.lock.open-state{border-color:#bfe0c8;background:#f0faf3;color:#1e7c40}
-  .count-note{color:var(--dim);font-size:12.5px;margin:6px 2px 0}
+  .count-note{color:var(--dim);font-size:13.5px;margin:6px 2px 0}
   .count-note a{color:var(--accent);font-weight:600}
   section{margin-top:44px}
   .sec-head{display:flex;align-items:center;gap:13px;padding:18px 20px;background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:0 1px 6px rgba(0,0,0,.04)}
-  .sec-num{width:32px;height:32px;flex:none;border-radius:9px;background:linear-gradient(135deg,#6d5122,#9a7534);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#fff}
-  .sec-head h2{font-size:19px;font-weight:700;color:var(--ink)}
-  .sec-head p{font-size:12.5px;color:var(--muted);margin-top:2px}
-  .sec-head .badge{margin-left:auto;flex:none;border:1px solid var(--border);color:var(--muted);border-radius:999px;padding:5px 13px;font-size:12px;font-weight:600;background:var(--bg2)}
-  .group-label{margin:26px 4px 12px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+  .sec-num{width:32px;height:32px;flex:none;border-radius:9px;background:linear-gradient(135deg,#6d5122,#9a7534);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#fff}
+  .sec-head h2{font-size:20px;font-weight:700;color:var(--ink)}
+  .sec-head p{font-size:13.5px;color:var(--muted);margin-top:2px}
+  .sec-head .badge{margin-left:auto;flex:none;border:1px solid var(--border);color:var(--muted);border-radius:999px;padding:5px 13px;font-size:13px;font-weight:600;background:var(--bg2)}
+  .group-label{margin:26px 4px 12px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
   .list{display:flex;flex-direction:column;gap:10px}
   .item{
     background:var(--card);border:1px solid var(--border);border-radius:13px;
@@ -84,82 +84,82 @@
   }
   .item.open{border-color:var(--border-hi);box-shadow:0 6px 18px rgba(0,0,0,.07)}
   .item.flag{border-left:4px solid var(--accent2)}
-  .item.flag .name::after{content:" ★";color:var(--accent2);font-size:12px}
+  .item.flag .name::after{content:" ★";color:var(--accent2);font-size:13px}
   .item-head{display:flex;align-items:flex-start;gap:11px;padding:14px 17px;cursor:pointer;user-select:none}
   .item:hover{border-color:#d2c19c}
   .item-head:hover{background:var(--accent-soft)}
   .item-head:hover .name{color:var(--accent)}
-  .item .num{font-size:11px;font-weight:800;color:var(--accent);letter-spacing:.05em;flex:none;margin-top:3px;min-width:32px}
+  .item .num{font-size:12px;font-weight:800;color:var(--accent);letter-spacing:.05em;flex:none;margin-top:3px;min-width:32px}
   .item .hgroup{flex:1;min-width:0}
-  .item .name{font-size:14.5px;font-weight:600;line-height:1.35;color:var(--ink)}
-  .item .vi{font-size:13px;color:var(--muted);line-height:1.55;margin-top:4px}
-  .item .chev{flex:none;color:var(--dim);font-size:12px;margin-top:4px;transition:.2s}
+  .item .name{font-size:15.5px;font-weight:600;line-height:1.35;color:var(--ink)}
+  .item .vi{font-size:14px;color:var(--muted);line-height:1.55;margin-top:4px}
+  .item .chev{flex:none;color:var(--dim);font-size:13px;margin-top:4px;transition:.2s}
   .item.open .chev{transform:rotate(90deg);color:var(--accent)}
   .item-body{display:none;border-top:1px solid var(--border);background:var(--card2)}
   .item.open .item-body{display:block}
   .copybar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:12px 17px 0}
   .cbtn{
-    border:none;border-radius:9px;padding:9px 16px;font-size:12.5px;font-weight:600;
+    border:none;border-radius:9px;padding:9px 16px;font-size:13.5px;font-weight:600;
     font-family:inherit;cursor:pointer;transition:.15s;
     background:linear-gradient(135deg,#6d5122,#9a7534);color:#fff;
   }
   .cbtn:hover{filter:brightness(1.15)}
   .cbtn.alt{background:var(--card);color:var(--accent);border:1px solid #d2c19c}
   .cbtn.alt:hover{background:var(--accent-soft)}
-  .charcount{margin-left:auto;font-size:11.5px;color:var(--dim)}
-  .std-hint{margin:10px 17px 0;font-size:12px;color:#6b5310;background:#fffbec;border:1px solid #e8d9a8;border-radius:9px;padding:8px 12px;line-height:1.5}
+  .charcount{margin-left:auto;font-size:12.5px;color:var(--dim)}
+  .std-hint{margin:10px 17px 0;font-size:13px;color:#6b5310;background:#fffbec;border:1px solid #e8d9a8;border-radius:9px;padding:8px 12px;line-height:1.5}
   .guide-box{margin:12px 17px 0;padding:11px 14px;background:var(--accent-soft);border:1px solid var(--border-hi);border-radius:10px}
-  .guide-row{font-size:13px;line-height:1.7;color:var(--text)}
+  .guide-row{font-size:14px;line-height:1.7;color:var(--text)}
   .guide-row+.guide-row{margin-top:7px}
   .guide-row b{color:var(--accent)}
   pre.content{
     margin:12px 17px 16px;padding:16px;background:#fff;border:1px solid var(--border);
-    border-radius:11px;font-family:Consolas,'Courier New',monospace;font-size:12.5px;
+    border-radius:11px;font-family:Consolas,'Courier New',monospace;font-size:13.5px;
     line-height:1.6;color:#24292f;white-space:pre-wrap;word-break:break-word;
     max-height:520px;overflow-y:auto;
   }
   .locked-box{margin:12px 17px 16px;padding:18px;background:#fffbec;border:1px dashed #e8d9a8;border-radius:11px;text-align:center}
-  .locked-box p{font-size:12.5px;color:#6b5310;margin-bottom:10px;line-height:1.5}
+  .locked-box p{font-size:13.5px;color:#6b5310;margin-bottom:10px;line-height:1.5}
   /* ---- password modal ---- */
   .pw-overlay{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(12,14,17,.58);backdrop-filter:blur(7px);padding:20px}
   .pw-overlay.show{display:flex}
   .pw-modal{position:relative;width:100%;max-width:400px;background:#fff;border-radius:22px;padding:36px 32px 26px;text-align:center;box-shadow:0 30px 90px rgba(0,0,0,.4);animation:pwIn .28s cubic-bezier(.2,.9,.3,1.15);overflow:hidden}
   .pw-modal::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#6d5122,#d4af37,#6d5122)}
   @keyframes pwIn{from{opacity:0;transform:translateY(16px) scale(.95)}to{opacity:1;transform:none}}
-  .pw-icon{width:68px;height:68px;margin:0 auto 16px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#2e3238,#131518);display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 10px 24px rgba(0,0,0,.28),inset 0 0 0 1.5px rgba(212,175,55,.45)}
-  .pw-modal h3{font-size:19px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
-  .pw-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-top:8px}
+  .pw-icon{width:68px;height:68px;margin:0 auto 16px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#2e3238,#131518);display:flex;align-items:center;justify-content:center;font-size:33px;box-shadow:0 10px 24px rgba(0,0,0,.28),inset 0 0 0 1.5px rgba(212,175,55,.45)}
+  .pw-modal h3{font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+  .pw-desc{font-size:14px;color:var(--muted);line-height:1.65;margin-top:8px}
   .pw-field{position:relative;margin-top:22px}
-  .pw-field input{width:100%;border:1.5px solid var(--border-hi);border-radius:12px;padding:13px 46px 13px 16px;font-size:15px;font-family:inherit;outline:none;color:var(--ink);background:var(--bg);letter-spacing:.05em;transition:.15s}
+  .pw-field input{width:100%;border:1.5px solid var(--border-hi);border-radius:12px;padding:13px 46px 13px 16px;font-size:16px;font-family:inherit;outline:none;color:var(--ink);background:var(--bg);letter-spacing:.05em;transition:.15s}
   .pw-field input:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(122,90,40,.09)}
-  .pw-eye{position:absolute;right:5px;top:50%;transform:translateY(-50%);border:none;background:none;cursor:pointer;font-size:16px;padding:8px 10px;opacity:.5;transition:.15s}
+  .pw-eye{position:absolute;right:5px;top:50%;transform:translateY(-50%);border:none;background:none;cursor:pointer;font-size:17px;padding:8px 10px;opacity:.5;transition:.15s}
   .pw-eye:hover{opacity:1}
-  .pw-err{display:none;margin-top:12px;font-size:12.5px;font-weight:600;color:#c0392b}
+  .pw-err{display:none;margin-top:12px;font-size:13.5px;font-weight:600;color:#c0392b}
   .pw-err.show{display:block}
   .pw-modal.shake{animation:pwShake .4s}
   @keyframes pwShake{0%,100%{transform:none}20%,60%{transform:translateX(-9px)}40%,80%{transform:translateX(9px)}}
-  .pw-submit{width:100%;margin-top:18px;border:none;border-radius:12px;padding:14px;font-size:14.5px;font-weight:700;font-family:inherit;color:#fff;cursor:pointer;background:linear-gradient(135deg,#6d5122,#9a7534);box-shadow:0 6px 18px rgba(109,81,34,.3);transition:.15s}
+  .pw-submit{width:100%;margin-top:18px;border:none;border-radius:12px;padding:14px;font-size:15.5px;font-weight:700;font-family:inherit;color:#fff;cursor:pointer;background:linear-gradient(135deg,#6d5122,#9a7534);box-shadow:0 6px 18px rgba(109,81,34,.3);transition:.15s}
   .pw-submit:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(109,81,34,.38)}
   .pw-submit:disabled{opacity:.65;cursor:default;transform:none}
-  .pw-cancel{margin-top:13px;border:none;background:none;font-family:inherit;font-size:12.5px;color:var(--dim);cursor:pointer}
+  .pw-cancel{margin-top:13px;border:none;background:none;font-family:inherit;font-size:13.5px;color:var(--dim);cursor:pointer}
   .pw-cancel:hover{color:var(--muted)}
-  .pw-remember{margin-top:14px;font-size:11.5px;color:var(--dim)}
+  .pw-remember{margin-top:14px;font-size:12.5px;color:var(--dim)}
   .tags-row{margin:0 17px 0;padding-top:10px}
-  .tag{display:inline-block;font-size:10.5px;padding:3px 9px;border-radius:999px;border:1px solid var(--border);color:var(--dim);letter-spacing:.04em;background:var(--bg2);margin-right:5px}
+  .tag{display:inline-block;font-size:11.5px;padding:3px 9px;border-radius:999px;border:1px solid var(--border);color:var(--dim);letter-spacing:.04em;background:var(--bg2);margin-right:5px}
   .tag.hot{border-color:#e2d3ab;color:#7a5a28;background:#f9f3e3}
   .chains{display:grid;gap:12px;margin-top:16px}
   .chain{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.03)}
-  .chain b{font-size:14px;color:var(--ink)}
-  .chain p{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.7}
+  .chain b{font-size:15px;color:var(--ink)}
+  .chain p{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.7}
   .chain .arrow{color:var(--dim)}
-  .note{margin-top:16px;background:#fffbec;border:1px solid #e8d9a8;border-radius:13px;padding:14px 17px;font-size:13px;color:#6b5310;line-height:1.6}
-  footer{margin:70px 0 34px;text-align:center;color:var(--dim);font-size:12.5px;line-height:1.8}
+  .note{margin-top:16px;background:#fffbec;border:1px solid #e8d9a8;border-radius:13px;padding:14px 17px;font-size:14px;color:#6b5310;line-height:1.6}
+  footer{margin:70px 0 34px;text-align:center;color:var(--dim);font-size:13.5px;line-height:1.8}
   .hidden{display:none!important}
   .totop{
     position:fixed;right:22px;bottom:22px;z-index:60;
     width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;
     background:linear-gradient(135deg,#6d5122,#9a7534);color:#fff;
-    font-size:18px;line-height:1;font-family:inherit;
+    font-size:19px;line-height:1;font-family:inherit;
     box-shadow:0 6px 18px rgba(109,81,34,.35);
     opacity:0;visibility:hidden;transform:translateY(10px);transition:.25s;
   }
@@ -169,7 +169,7 @@
     position:fixed;left:22px;bottom:22px;z-index:60;
     width:46px;height:46px;border-radius:50%;cursor:pointer;
     border:1px solid var(--border-hi);background:var(--card);
-    font-size:20px;line-height:1;font-family:inherit;
+    font-size:21px;line-height:1;font-family:inherit;
     box-shadow:0 6px 18px rgba(0,0,0,.18);transition:.25s;
   }
   .bulb:hover{transform:translateY(-2px);border-color:var(--accent)}
@@ -178,7 +178,6 @@
   /* ---- dark theme (đèn tắt — nền đen vàng) ---- */
   html[data-theme="dark"] header{background:rgba(13,13,15,.92)}
   html[data-theme="dark"] .logo{background:#131518;box-shadow:inset 0 0 0 1.5px rgba(212,175,55,.45)}
-  html[data-theme="dark"] h1 .accent{background:linear-gradient(135deg,#f0d37a,#c9a13b);-webkit-background-clip:text;background-clip:text}
   html[data-theme="dark"] .stat:hover{border-color:#574925;box-shadow:0 8px 20px rgba(0,0,0,.45)}
   html[data-theme="dark"] .fbtn:hover{border-color:#574925}
   html[data-theme="dark"] .fbtn.on{color:#1a1508}
@@ -216,9 +215,8 @@
 <div class="wrap">
 
   <div class="hero">
-    <div class="hero-emblem">⚜️</div>
-    <h1>Creative Strategy <span class="accent">OS</span></h1>
-    <div class="sub">Jakob Counts · DTC Creative Strategy · Bản diễn giải tiếng Việt</div>
+    <h1><span class="rgb">Creative Strategy OS</span></h1>
+    <div class="sub">Jakob Counts · DTC Creative Strategy</div>
     <div class="meta">
       <span class="chip">🛒 DTC / Ecom</span>
       <span class="chip"><span class="dot"></span>library</span>
@@ -241,7 +239,7 @@
       <button class="fbtn" data-f="exec">Execution</button>
       <button class="fbtn" data-f="research">Research</button>
       <button class="fbtn" data-f="util">Utilities</button>
-      <button class="fbtn lock" id="lockBtn" onclick="unlockFlow()">🔒 Mở khóa nội dung</button>
+      <button class="fbtn lock" id="lockBtn" onclick="unlockFlow()">🔒 Khai mở tinh hoa</button>
     </div>
   </div>
   <div class="count-note" id="countNote"></div>
@@ -291,17 +289,17 @@
 
 <div class="pw-overlay" id="pwOverlay" onclick="if(event.target===this)closePwModal()">
   <div class="pw-modal" id="pwModal">
-    <div class="pw-icon">⚜️</div>
-    <h3>Nội dung được bảo vệ</h3>
-    <p class="pw-desc">Toàn bộ 82 prompts &amp; skills được mã hóa AES-256.<br>Nhập mật khẩu để mở khóa thư viện.</p>
+    <div class="pw-icon">🧙‍♂️</div>
+    <h3>Khu Vực Tinh Hoa Nhân Loại 🏛️</h3>
+    <p class="pw-desc">Nhập mật khẩu để tiếp cận tri thức nhân loại 🧠✨<br>82 bí kíp thượng thừa đang chờ người xứng đáng 😎</p>
     <div class="pw-field">
-      <input type="password" id="pwInput" placeholder="Nhập mật khẩu..." autocomplete="off">
+      <input type="password" id="pwInput" placeholder="Đọc thần chú vào đây... 🤫" autocomplete="off">
       <button type="button" class="pw-eye" onclick="togglePwVis(this)" title="Hiện / ẩn mật khẩu">👁️</button>
     </div>
-    <div class="pw-err" id="pwErr">Sai mật khẩu rồi anh, thử lại nha.</div>
-    <button class="pw-submit" id="pwSubmit" onclick="submitPw()">🔓 Mở khóa thư viện</button>
+    <div class="pw-err" id="pwErr">🙅 Thần chú sai rồi anh ơi — tri thức nhân loại chưa chịu mở, thử lại nha!</div>
+    <button class="pw-submit" id="pwSubmit" onclick="submitPw()">✨ Khai Mở Tinh Hoa</button>
     <div><button class="pw-cancel" onclick="closePwModal()">Để sau</button></div>
-    <div class="pw-remember">Chỉ cần nhập một lần — trình duyệt sẽ tự nhớ cho những lần sau</div>
+    <div class="pw-remember">🔐 Bảo mật cấp cao: đóng trang là kho tự khóa — mở lên lại thì đọc thần chú tiếp nha anh 😜</div>
   </div>
 </div>
 
@@ -416,21 +414,22 @@ const PROMPTS = [
 /* ---------- Hướng dẫn sử dụng (diễn giải tiếng Việt) ---------- */
 const RS="Bấm nút ⭐ Copy kèm Standards để lấy sẵn khối Research Standards dán trên đầu, rồi paste vào Claude hoặc Perplexity Deep Research.";
 const Q5="Prompt sẽ mở đầu bằng 5 câu hỏi intake — trả lời xong nó mới xuất báo cáo.";
+const SK="Paste TOÀN BỘ skill vào Claude hoặc ChatGPT làm project knowledge, trả lời câu hỏi intake (STEP 0)";
 const PROMPT_GUIDES={
  P00:[["📌 Đây là gì","Không phải prompt chạy riêng — đây là khối tiêu chuẩn research. Copy TOÀN BỘ khối và dán lên ĐẦU bất kỳ prompt nào từ 14–53 trước khi chạy."],["💡 Mẹo","Ở các prompt 14–53, chỉ cần bấm nút ⭐ Copy kèm Standards — trang sẽ tự dán khối này lên đầu cho bạn."]],
- P01:[["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT, điền hết mọi ô [ngoặc vuông] rồi gửi."],["🎒 Chuẩn bị","Hook đang thắng + taxonomy của ad (angle, persona, awareness level, emotional trigger, identity cue) + 2–3 quy tắc brand voice."],["⏱️ Khi nào dùng","Concept đang chạy tốt và bạn muốn 5 biến thể hook để test."]],
- P02:[["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT, điền hết các ô [ngoặc vuông]."],["🎒 Chuẩn bị","Taxonomy đầy đủ của ad thắng + một ghi chú vì sao bạn chọn xoay angle thay vì kill ad."],["⏱️ Khi nào dùng","Biến thể hook đã cạn nhưng angle vẫn còn tín hiệu tốt."]],
- P03:[["🧭 Cách chạy","Paste vào Claude (ChatGPT cũng chạy — bỏ bước sinh ảnh hoặc dùng tool ảnh riêng)."],["🎒 Chuẩn bị","Brand + ngành hàng, batch angle đang sản xuất, 2–3 quy tắc brand voice, câu identity cue, các khối content sẵn có (headline, benefit, social proof, offer), menu layout tham chiếu, và danh sách content thô đang có (ảnh sản phẩm, b-roll, footage founder/talent)."],["⏱️ Khi nào dùng","Cần 10–25 brief static sẵn giao designer trong một lần chạy — công cụ tiết kiệm thời gian nhất pack."]],
- P04:[["🧭 Cách chạy","Paste vào Claude — tốt nhất khi AI có browser access (Claude with Chrome / Cowork); không có thì tự paste transcript + mô tả hình ảnh của ad."],["🎒 Chuẩn bị","URL hoặc file của ad, brand + ngành hàng, số liệu performance."],["⏱️ Khi nào dùng","Một ad vượt ngưỡng winner và bạn muốn giải mã chính xác vì sao nó thắng."]],
- P05:[["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT."],["🎒 Chuẩn bị","Tên/ID ad, taxonomy, và 21 ngày data chia theo tuần (CPP, ROAS, CTR, thumbstop, hold rate, số ngày chạy) — paste số liệu vào, hoặc đưa URL dashboard nếu AI có browser."],["⏱️ Khi nào dùng","Ad thắng có CPP / ROAS / thumbstop giảm dần trong cửa sổ 7 ngày."]],
- P06:[["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT. Nếu AI xem được video (vd Gemini) thì để nó tự trích taxonomy; không thì tự paste transcript."],["🎒 Chuẩn bị","Ad đã chứng minh (URL, file, hoặc transcript + mô tả hình ảnh) + 2–3 quy tắc brand voice."],["⏱️ Khi nào dùng","Concept đã thắng ở một format và bạn muốn test nó ở các format khác."]],
- P07:[["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT."],["🎒 Chuẩn bị","Ad đối thủ (URL hoặc mô tả), category + positioning của đối thủ, bằng chứng nó là winner (thời gian đốt tiền, tuổi thọ trong ad library, creator endorsement), và brand + ngành của mình."],["⏱️ Khi nào dùng","Có nguồn tin cậy chỉ điểm ad thắng của đối thủ, hoặc bạn đang soi spy tools (Meta Ad Library, TikTok Creative Center, tool trả phí…)."]],
- P08:[["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT."],["🎒 Chuẩn bị","Top 3–5 winners kèm taxonomy + số liệu, learnings 30 ngày test vừa rồi (combo thắng lẫn thua), mục tiêu tháng tới, seasonality, mức spend, chỉ tiêu concept mỗi tuần."],["⏱️ Khi nào dùng","Cuối tháng, hoặc khi bắt đầu client mới."]],
- P09:[["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT."],["🎒 Chuẩn bị","Personas hiện tại, winners hiện tại (taxonomy + identity cue), và 15–20 quote khách NGUYÊN VĂN từ reviews, ticket support, DM, sales call."],["⏱️ Khi nào dùng","Persona hiện tại đã max và bạn đang săn audience mới. Nên chạy mỗi quý."]],
- P10:[["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT."],["🎒 Chuẩn bị","Ad chết (URL, file hoặc transcript), số liệu performance, lý do nó bị flag, và learnings 60 ngày test gần nhất."],["⏱️ Khi nào dùng","Một ad kém đáng được khám nghiệm trước khi xóa hẳn."]],
- P11:[["🧭 Cách chạy","Gồm 2 phần: Phần A là cả hệ thống onboarding (workflow bao quanh prompt); Phần B là prompt phỏng vấn dạng hội thoại — paste vào Claude/ChatGPT khi muốn dẫn client onboard trực tiếp thay vì gửi form."],["🎒 Chuẩn bị","Chỉ cần tên công ty client + người liên hệ chính."],["📌 Lưu ý","Có 3 câu hỏi BẮT BUỘC ở mọi lần onboarding — chúng moi ra động lực thật của founder, bộ lọc giá trị, và nỗi lo chưa nói ra (thành risk register 90 ngày của bạn)."]],
- P12:[["🧭 Cách chạy","Paste MỘT LẦN vào ô Project Instructions của mỗi project client mới trong Claude (Projects / Cowork). Thay các ô [ngoặc] bằng tên trang/doc trong workspace của bạn trước khi lưu — không cần input gì thêm."],["⏱️ Khi nào dùng","Mỗi project client mới — đây là chỉ dẫn thường trực định hình mọi chat trong project."]],
- P13:[["🧭 Cách chạy","Đây là prompt cho VIDEO TOOL, không phải chat. Viết mô tả cảnh 2–3 câu → gắn nguyên khối UGC chuẩn (không sửa) → paste cả cụm vào Sora, Kling, Runway, Higgsfield… ở chế độ direct-prompt."],["🎒 Chuẩn bị","Quyết định trước: nhân vật, bối cảnh, và cảm xúc (hoặc mã FACS — xem P51)."],["💡 Mẹo","Thay từ cảm xúc (happy/sad/angry…) bằng mã FACS AU — AI video render vi biểu cảm thật từ mã AU, còn từ cảm xúc chỉ cho ra mặt kiểu stock-photo."]],
+ P01:[["🎯 Nó làm gì","Nhập 1 hook đang thắng + taxonomy đầy đủ của ad đó → sinh 5 biến thể hook giữ nguyên công thức đã thắng, đúng brand voice."],["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT, điền hết mọi ô [ngoặc vuông] rồi gửi."],["🎒 Chuẩn bị","Hook đang thắng + taxonomy của ad (angle, persona, awareness level, emotional trigger, identity cue) + 2–3 quy tắc brand voice."],["⏱️ Khi nào dùng","Concept đang chạy tốt và bạn muốn 5 biến thể hook để test."]],
+ P02:[["🎯 Nó làm gì","Từ 1 ad thắng đang đuối → đề xuất các angle iteration mới: giữ lại phần đã chứng minh (persona, format, hook type), chỉ thay phần cần thay — thay vì kill cả concept."],["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT, điền hết các ô [ngoặc vuông]."],["🎒 Chuẩn bị","Taxonomy đầy đủ của ad thắng + một ghi chú vì sao bạn chọn xoay angle thay vì kill ad."],["⏱️ Khi nào dùng","Biến thể hook đã cạn nhưng angle vẫn còn tín hiệu tốt."]],
+ P03:[["🎯 Nó làm gì","Nhà máy brief static: từ 1 batch angle + kho content sẵn có (headline, benefit, social proof, offer) → xuất hàng loạt brief static ads sẵn giao designer."],["🧭 Cách chạy","Paste vào Claude (ChatGPT cũng chạy — bỏ bước sinh ảnh hoặc dùng tool ảnh riêng)."],["🎒 Chuẩn bị","Brand + ngành hàng, batch angle đang sản xuất, 2–3 quy tắc brand voice, câu identity cue, các khối content sẵn có (headline, benefit, social proof, offer), menu layout tham chiếu, và danh sách content thô đang có (ảnh sản phẩm, b-roll, footage founder/talent)."],["⏱️ Khi nào dùng","Cần 10–25 brief static sẵn giao designer trong một lần chạy — công cụ tiết kiệm thời gian nhất pack."]],
+ P04:[["🎯 Nó làm gì","Mổ xẻ 1 ad thắng: transcript, cấu trúc beat, taxonomy, vì sao nó thắng — nếu AI của bạn xem được video (vd Gemini) thì nó phân tích luôn phần hình."],["🧭 Cách chạy","Paste vào Claude — tốt nhất khi AI có browser access (Claude with Chrome / Cowork); không có thì tự paste transcript + mô tả hình ảnh của ad."],["🎒 Chuẩn bị","URL hoặc file của ad, brand + ngành hàng, số liệu performance."],["⏱️ Khi nào dùng","Một ad vượt ngưỡng winner và bạn muốn giải mã chính xác vì sao nó thắng."]],
+ P05:[["🎯 Nó làm gì","So sánh data 21 ngày chia theo tuần (CPP, ROAS, CTR, thumbstop, hold rate) → kết luận ad có đang fatigue không, fatigue kiểu gì và bước xử lý tiếp theo."],["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT."],["🎒 Chuẩn bị","Tên/ID ad, taxonomy, và 21 ngày data chia theo tuần (CPP, ROAS, CTR, thumbstop, hold rate, số ngày chạy) — paste số liệu vào, hoặc đưa URL dashboard nếu AI có browser."],["⏱️ Khi nào dùng","Ad thắng có CPP / ROAS / thumbstop giảm dần trong cửa sổ 7 ngày."]],
+ P06:[["🎯 Nó làm gì","Trích taxonomy của 1 concept đã chứng minh → dịch nó sang 3 format khác nhau, kèm mô tả ảnh reference cho bản static."],["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT. Nếu AI xem được video (vd Gemini) thì để nó tự trích taxonomy; không thì tự paste transcript."],["🎒 Chuẩn bị","Ad đã chứng minh (URL, file, hoặc transcript + mô tả hình ảnh) + 2–3 quy tắc brand voice."],["⏱️ Khi nào dùng","Concept đã thắng ở một format và bạn muốn test nó ở các format khác."]],
+ P07:[["🎯 Nó làm gì","Bóc ngược ad thắng của đối thủ thành cấu trúc + công thức tái sử dụng cho brand mình — nhớ khai đúng quan hệ: đối thủ trực tiếp / kề cận / chỉ tham khảo."],["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT."],["🎒 Chuẩn bị","Ad đối thủ (URL hoặc mô tả), category + positioning của đối thủ, bằng chứng nó là winner (thời gian đốt tiền, tuổi thọ trong ad library, creator endorsement), và brand + ngành của mình."],["⏱️ Khi nào dùng","Có nguồn tin cậy chỉ điểm ad thắng của đối thủ, hoặc bạn đang soi spy tools (Meta Ad Library, TikTok Creative Center, tool trả phí…)."]],
+ P08:[["🎯 Nó làm gì","Từ top winners + learnings 30 ngày qua + mục tiêu, seasonality, mức spend → lộ trình test 30 ngày với chỉ tiêu concept theo tuần."],["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT."],["🎒 Chuẩn bị","Top 3–5 winners kèm taxonomy + số liệu, learnings 30 ngày test vừa rồi (combo thắng lẫn thua), mục tiêu tháng tới, seasonality, mức spend, chỉ tiêu concept mỗi tuần."],["⏱️ Khi nào dùng","Cuối tháng, hoặc khi bắt đầu client mới."]],
+ P09:[["🎯 Nó làm gì","Đọc 15–20 quote khách NGUYÊN VĂN + tín hiệu từ data → chỉ ra các persona chưa khai thác, kèm bằng chứng và góc tiếp cận cho từng persona."],["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT."],["🎒 Chuẩn bị","Personas hiện tại, winners hiện tại (taxonomy + identity cue), và 15–20 quote khách NGUYÊN VĂN từ reviews, ticket support, DM, sales call."],["⏱️ Khi nào dùng","Persona hiện tại đã max và bạn đang săn audience mới. Nên chạy mỗi quý."]],
+ P10:[["🎯 Nó làm gì","Khám nghiệm ad chết: đối chiếu angle/format/persona đó có đang thắng ở chỗ khác không → chẩn đoán chết vì đâu + kế hoạch hồi sinh nếu đáng cứu."],["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT."],["🎒 Chuẩn bị","Ad chết (URL, file hoặc transcript), số liệu performance, lý do nó bị flag, và learnings 60 ngày test gần nhất."],["⏱️ Khi nào dùng","Một ad kém đáng được khám nghiệm trước khi xóa hẳn."]],
+ P11:[["🎯 Nó làm gì","Onboarding kiểu phỏng vấn dẫn dắt: hỏi TỪNG CÂU MỘT, chốt tóm tắt cuối mỗi section — dùng khi client thích trò chuyện hơn là điền form dài."],["🧭 Cách chạy","Gồm 2 phần: Phần A là cả hệ thống onboarding (workflow bao quanh prompt); Phần B là prompt phỏng vấn dạng hội thoại — paste vào Claude/ChatGPT khi muốn dẫn client onboard trực tiếp thay vì gửi form."],["🎒 Chuẩn bị","Chỉ cần tên công ty client + người liên hệ chính."],["📌 Lưu ý","Có 3 câu hỏi BẮT BUỘC ở mọi lần onboarding — chúng moi ra động lực thật của founder, bộ lọc giá trị, và nỗi lo chưa nói ra (thành risk register 90 ngày của bạn)."]],
+ P12:[["🎯 Nó làm gì","Standing instructions biến AI thành nhân viên trong Creative OS của bạn: luôn đọc Skills Hub + Learnings Database trong workspace trước khi làm, không làm từ trí nhớ."],["🧭 Cách chạy","Paste MỘT LẦN vào ô Project Instructions của mỗi project client mới trong Claude (Projects / Cowork). Thay các ô [ngoặc] bằng tên trang/doc trong workspace của bạn trước khi lưu — không cần input gì thêm."],["⏱️ Khi nào dùng","Mỗi project client mới — đây là chỉ dẫn thường trực định hình mọi chat trong project."]],
+ P13:[["🎯 Nó làm gì","Khối text chuẩn hóa gắn sau mô tả cảnh — ép video tool render kiểu UGC organic thật (camera, ánh sáng, vi biểu cảm) thay vì footage bóng bẩy mùi quảng cáo."],["🧭 Cách chạy","Đây là prompt cho VIDEO TOOL, không phải chat. Viết mô tả cảnh 2–3 câu → gắn nguyên khối UGC chuẩn (không sửa) → paste cả cụm vào Sora, Kling, Runway, Higgsfield… ở chế độ direct-prompt."],["🎒 Chuẩn bị","Quyết định trước: nhân vật, bối cảnh, và cảm xúc (hoặc mã FACS — xem P51)."],["💡 Mẹo","Thay từ cảm xúc (happy/sad/angry…) bằng mã FACS AU — AI video render vi biểu cảm thật từ mã AU, còn từ cảm xúc chỉ cho ra mặt kiểu stock-photo."]],
  P14:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Prompt research chủ lực của pack — map toàn bộ nội tâm buyer qua 14 chiều identity, 12 framework tâm lý học, cultural alignment và multi-identity priority."],["⏱️ Khi nào dùng","Trước mọi campaign lớn, khi onboard client mới, hoặc khi pivot positioning."]],
  P15:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Báo cáo audience toàn diện — personas, comment và quote khách thật, FAQ, reviews, testimonials, psychographics, trigger cảm xúc, thói quen mua, độc thoại nội tâm."]],
  P16:[["🧭 Cách chạy","Bấm ⭐ Copy kèm Standards, paste vào Claude (tốt nhất có browser access để soi ad library + review sites) hoặc Perplexity Deep Research. Mở đầu bằng 6 câu hỏi intake."],["🎯 Nó làm gì","Phân tích đối thủ đầy đủ — positioning, messaging, giọng audience, retention, SEO/SERP, awareness ladder, mổ creative, map funnel, và các nước đi kill-shot riêng cho brand."]],
@@ -472,6 +471,33 @@ const PROMPT_GUIDES={
  P52:[["🧭 Cách chạy","Copy nguyên khối prompt, paste vào một chat Claude Cowork mới (Claude.ai có connected tools cũng chạy). Trả lời câu hỏi lần lượt — khoảng 10–20 phút là có một automation chạy được."],["⏱️ Khi nào dùng","Cho người mới hoàn toàn — bạn bè, gia đình, client, ai chưa từng dùng Cowork."]],
  P53:[["🧭 Cách chạy","Paste NGUYÊN prompt vào Claude (Cowork hoặc Claude.ai có browser) — đừng cắt phần đầu. Cần tài khoản Poppy AI (free tier tại app.getpoppy.ai) + mọi notes/research sẵn có về chủ đề."],["🎯 Nó làm gì","Điều khiển Poppy AI + browser research 15+ content về chủ đề bạn đang học, rồi trả về framework, hướng đi thực dụng và 5 giả thuyết ứng dụng rút từ bằng chứng thật."]],
  P54:[["📌 Loại","Build prompt — nó tạo ra một artifact chạy được, không phải báo cáo research."],["🧭 Cách chạy","Paste khối prompt vào Claude. Nó phỏng vấn bạn vài phút rồi build một file lịch HTML duy nhất tự chạy tuần của bạn — việc lặp lại tự hiện, kéo để dời, click để tick, tự nhớ."],["⏱️ Khi nào dùng","Đang chạy nhiều client theo chu kỳ tháng và tháng nào cũng phải ghép lại cùng một lịch bằng tay."]],
+ S01:[["🎯 Nó làm gì","Viết bài B2B 900–1200 từ (4–5 phút đọc) bằng đúng giọng CỦA BẠN — tự gọi Hook Writing Skill (mọi hook phải đạt 9–10/10 mới ship) và Copywriting Skill (văn phong lớp 5, cụ thể thay vì chung chung)."],["🧭 Cách chạy",SK+", rồi nói 'write the article'."],["🎒 Chuẩn bị","Chủ đề + angle 1 câu, người đọc mục tiêu, 1–2 ví dụ/proof THẬT trong tuần, CTA nếu có — và quan trọng nhất: 3–5 mẫu văn của chính bạn (tweet, bài cũ, email) để bài nghe như bạn viết chứ không phải AI."],["📌 Luật cứng","Cấm em-dash, cấm câu dưới 5 từ đứng một mình, cấm listicle không cần thiết, cấm ~30 cụm từ mùi AI trong kill-list (delve, unlock, leverage, game changer…)."]],
+ S02:[["🎯 Nó làm gì","Copywriter direct-response cấp senior cho MỌI loại copy: ad script, headline, body, CTA, email, landing page. Đây là skill nền — Brief Writing gọi nó mỗi lần cần viết script."],["🧭 Cách chạy",SK+" (10 mục), rồi xin bất kỳ loại copy nào."],["🎒 Chuẩn bị","Intake 10 mục — đáng giá nhất: brand voice Do và Don't, 10+ quote khách NGUYÊN VĂN (không có = copy chỉ là đoán, skill sẽ tự cảnh báo), và learnings về pattern thắng/thua của account."],["📌 Luật cứng","2 luật tối thượng: KHÔNG được nghe như marketing (văn lớp 5, như bạn thân khuyên nhau) và STORY LÀ BẮT BUỘC — copy không có story beat thì không ship. Audience chưa rõ là nó DỪNG lại hỏi, không viết mò."]],
+ S03:[["🎯 Nó làm gì","Bảo kê chất truyện cho cả hệ thống: chọn story arc, character mapping và kiểu mở truyện cho từng asset. Mặc định: arc 'Man in a Hole' + mô hình Hero & Guide + 1 trong 6 loại Story Hook (Questions / Unexpected / Ironies / Relatable / Knowledge / Secrets)."],["🧭 Cách chạy",SK+", rồi nhờ nó chọn story arc cho asset đang viết — hoặc để nó chạy tự động trước mỗi lần viết copy."],["🎒 Chuẩn bị","Loại asset, sản phẩm + brand voice, audience và cách họ TỰ NHÌN chính mình (identity narrative), angle + payoff, awareness level, story pattern từng thắng nếu có."],["📌 Luật cứng","Không nhượng bộ: thiếu story = trả về Copywriting Skill làm lại. Nghiên cứu Stanford: story được nhớ gấp 22 lần facts. Audience luôn là HERO, không bao giờ là đối tượng bị thương hại."]],
+ S04:[["🎯 Nó làm gì","Cổng QA cuối trước khi ad lên account: gom mọi rubric (strategy diagnostic, attention, copy QA, khớp brief kit, identity-first, brand voice, chuẩn format) thành 1 scorecard PASS/FAIL duy nhất."],["🧭 Cách chạy",SK+", rồi paste brief hoặc ad cần kiểm."],["🎒 Chuẩn bị","Thứ đang check (brief / static / video / scroll-text), brand voice + banned words, entry testing matrix tương ứng, và vertical (health, finance… — quyết định độ gắt của compliance check)."],["📌 Luật cứng","Nhịp chuẩn: duyệt 2 brief mỗi lượt, không dump cả batch. Brief chưa được coi là xong nếu chưa qua cả Hook Writing (hook dưới 8/10 phải viết lại) LẪN scorecard này. Không pass = không ship."]],
+ S05:[["🎯 Nó làm gì","Biến hypothesis trong testing matrix thành brief production-ready — editor/designer cầm là làm được ngay. Tách đôi rõ ràng: strategist brief (đủ chiến lược) vs editor brief (bản cắt gọn CHỈ chứa thứ editor cần: code, reference video, audio, bảng script), nối nhau bằng code."],["🧭 Cách chạy",SK+", rồi nói 'write the brief' — MỖI LẦN 1 BRIEF, duyệt xong mới sang cái tiếp."],["🎒 Chuẩn bị","Lần chạy đầu nó hỏi vài câu (niche, audience, brand voice, tool, chỗ lưu) để tự build phiên bản riêng cho bạn — trả lời, duyệt, chạy."],["📌 Luật cứng","LOCKED RULE: text overlay KHÔNG BAO GIỜ trùng nguyên văn voiceover. Overlay = scroll-stopper đọc dưới 1 giây; VO = người bạn kể tiếp câu chuyện. Trùng lời = kill ngay, không xếp hàng chờ sửa."]],
+ S06:[["🎯 Nó làm gì","Report performance đúng chuẩn: tag MỌI ad có spend đáng kể (winner LẪN loser, cùng độ sâu), gọi tên top 3 driver của từng ad, chấm điểm building blocks, đề xuất hypothesis cho batch sau + danh sách learnings cần log."],["🧭 Cách chạy","Paste vào Claude rồi nói 'set this up for me' — nó hỏi từng câu MỘT (kèm lý do + default), build bản riêng của bạn, rồi chạy trên export data."],["🎒 Chuẩn bị","Export performance (ad name, spend, impressions, reach, purchases, CPA/CPP, CTR, thumbstop, frequency), khoảng giá sản phẩm + CPA trung bình (để xếp tier WINNER/PROMISING/LOSER), kho angle/hook/persona đã proven."],["📌 Luật cứng","Chạy CPMr check ĐẦU TIÊN: (spend ÷ unique reach) × 1.000 — CPMr tăng dần = đang trả tiền để gặp lại người cũ, thủ phạm số 1 của plateau. Ad có code trong tên thì taxonomy phải TRA từ Testing Matrix, tuyệt đối không đoán từ tên ad."]],
+ S07:[["🎯 Nó làm gì","Trinh sát concept bằng chữ: đào ngôn ngữ ở quy mô lớn (bài viết, thread, review, ticket, transcript) → bank concept ad đã chấm điểm, sẵn đưa vào test. Skill THƯỢNG NGUỒN — Brief Prep và Copywriting đóng gói những gì nó tìm ra."],["🧭 Cách chạy",SK+", drop đủ 5 input bắt buộc rồi nói 'run the discovery'. Lịch chuẩn: sáng thứ Hai hàng tuần, trước khi fill Testing Matrix."],["🎒 Chuẩn bị","5 input bắt buộc: export creative-intelligence đã tag (Atria…), danh sách ad đã lưu tuần này (Foreplay…), trend tracker short-form, learnings doc (QUAN TRỌNG NHẤT — cho phép ghép các mảnh đã thắng thành concept mới), brand basics. Thiếu cái nào nó DỪNG hỏi, không bịa."],["📌 Lưu ý","Chỉ mine TEXT, không đánh giá visual — AI không xem được video; tín hiệu visual lấy từ tag của platform + mắt người."]],
+ S08:[["🎯 Nó làm gì","Kỹ sư chuyển đổi organic: seed comment (comment gốc + reply) trên video đang viral trong niche — vì conversion bây giờ xảy ra Ở PHẦN COMMENT, người lướt feed không bấm link-in-bio."],["🧭 Cách chạy",SK+", rồi chạy vòng lặp 30–45 phút mỗi ngày: quét seed accounts → chọn video đạt trigger → nó viết + QA từng comment."],["🎒 Chuẩn bị","Offer/sản phẩm, danh sách 10–20 seed account mà khách của bạn theo dõi, ngưỡng trigger (mặc định: video đạt 10K+ views trong 24h đầu), brand voice, 15–20 quote ICP nguyên văn, định nghĩa conversion (DM/save/follow/click), red-lines."],["📌 Luật cứng","Chỉ seed video ĐANG TAKE OFF — thuật toán đang đẩy thì comment được khuếch đại theo; comment trên video 2K views là công cốc."]],
+ S09:[["🎯 Nó làm gì","KHÔNG viết brief — nó build BRIEF KIT: data context, customer language bank, competitive references, visual direction, production notes. Nguyên liệu khiến brief 'không thể viết tệ được'. Cầu nối giữa Testing Matrix (test gì) và Brief Writing (brief sẵn sản xuất)."],["🧭 Cách chạy",SK+", rồi nói 'prep the brief kit' — chạy 5 phase, sau MỖI phase dừng checkpoint chờ bạn duyệt rồi mới đi tiếp."],["🎒 Chuẩn bị","Entry testing matrix cụ thể (angle, hook type, persona, trigger, format, proof, funnel stage, awareness), tool research đang có (Atria / Foreplay / Meta Ad Library — không có thì paste reference tay), learnings record, persona profile + câu chữ khách nguyên văn, loại ad (static / UGC / VO+B-roll)."]],
+ S10:[["🎯 Nó làm gì","Nhận report Creative Analysis → xếp MỌI ad vào đúng 1 nhóm: SCALE (đạt 2x breakeven ROAS xác nhận 7+ ngày → đẩy sang scaling campaign) / ITERATE (chỉ đích danh điểm gãy + bản fix) / KILL (ghi learning rồi bỏ) / RETEST (chưa đủ data)."],["🧭 Cách chạy",SK+", chạy NGAY SAU khi report Creative Analysis được duyệt, rồi nói 'make the iteration decisions'."],["🎒 Chuẩn bị","3 input: report Creative Analysis đã duyệt, learnings entries mới cập nhật, ghi chú WHY của chính bạn cho từng winner/loser. Kèm: breakeven ROAS, target CPA, cấu trúc campaign (testing vs scaling)."],["⏱️ Luật tốc độ","Quyết trong vòng 48 giờ sau phân tích — chậm hơn là lỡ nhịp batch tuần."]],
+ S11:[["🎯 Nó làm gì","Sprint research sâu xây knowledge base đứng sau mọi angle/hook/messaging: 5 core report chạy lần lượt (Brand Identity → Audience cá tính thật → Deep Research thị trường → Competitor → Mechanisms) + kho extended report tùy chọn."],["🧭 Cách chạy",SK+", rồi nói 'run the research sprint' — report chạy TỪNG CÁI, bạn duyệt giữa mỗi cái."],["🎒 Chuẩn bị","3 input bắt buộc: (1) website + product pages, (2) tổng quan ad account (đang chạy gì, TOF/MOF/BOF), (3) doc onboarding/background — không có doc thì trả lời 4 câu: khách là ai, offer gì, top 3 đối thủ, mục tiêu 90 ngày."],["📌 Lưu ý","Triết lý: research là công cụ RA QUYẾT ĐỊNH — nếu output không thay đổi thứ được test/kill/phân bổ ngân sách thì research đó chưa xong."]],
+ S12:[["🎯 Nó làm gì","Script video talking-head kiểu 'yapping': iPhone + captions, không cần studio. 7 format (Standard / Walking / Car / Graphic yap…) — chọn ĐÚNG 1 không trộn; 1 framework không trộn. Build từ framework public của Oren John (@orenmeetsworld)."],["🧭 Cách chạy","Paste skill, dump 30 giây context (topic, audience, mục tiêu, nền tảng, cái gì gợi ý tưởng), trả lời 5 câu, rồi nói 'write the yap script'."],["🎒 Chuẩn bị","Topic 1 câu, goal (followers / replies / opt-in / sales), platform, độ dài (15 giây → 2-3 phút), chi tiết bắt buộc phải có + 2–3 mẫu content cũ để bắt đúng giọng bạn."],["📌 Lưu ý","Dành cho PERSONAL BRAND — nếu là UGC ad cho client thì dùng UGC Scriptwriting / Brief Writing. Người mới bắt đầu bằng Standard Yap; Walking/Car chỉ khi đã có 50+ video."]],
+ S13:[["🎯 Nó làm gì","Kiến trúc sư testing: thiết kế batch thí nghiệm có kiểm soát — cô lập đúng 1 biến mỗi test, batch size theo tier spend ($100K → $1M+), hypothesis đủ cụ thể để THẮNG HAY THUA đều ra learning tái dùng được."],["🧭 Cách chạy",SK+", rồi nói 'design the batch'."],["🎒 Chuẩn bị","Tóm tắt sản phẩm + audience, mức spend tháng (quyết định batch size), kết quả batch trước, hướng muốn đẩy, CPA / AOV / breakeven ROAS, cấu trúc account hiện tại."],["📌 Luật cứng","FORCED GATE trước khi design: check hệ tầng Funnel → Optimization/Attribution → Bidding → Creative. Tầng dưới đang lệch (vd sai conversion event) thì test creative chỉ đốt tiền — skill sẽ flag 'sửa tầng đó trước đã'."]],
+ S14:[["🎯 Nó làm gì","Ad founder nói trước camera, ăn nhờ 3 đòn tâm lý: trust collapse (mặt người thật + chuyện thật đánh tan hoài nghi), authority by origin (đã sống qua vấn đề nên có quyền claim), identity transfer (viewer thấy mình trong 'before' của founder). Biến số dự báo mạnh nhất: founder có THẬT SỰ tin điều mình nói không."],["🧭 Cách chạy",SK+", rồi nói 'write the founder ad'."],["🎒 Chuẩn bị","Origin story THẬT với con số thật ('nợ $120k' chứ không phải 'khó khăn tài chính'), mechanism chỉ founder này claim được (không có mechanism = không có belief), proof đã verify, 2–3 mẫu founder nói chuyện thật (podcast, email), audience là 1 người cụ thể + objection chính của họ, platform + độ dài + CTA."],["📌 Lưu ý","KHÔNG dùng cho UGC testimonial — talent là khách hàng chứ không phải founder thì sang UGC Scriptwriting Skill."]],
+ S15:[["🎯 Nó làm gì","Generator + judge trong một: sinh biến thể hook cho brief, tự chấm rubric 50 điểm, hook yếu tự viết lại đến chuẩn ship — mỗi hook trả về kèm điểm số + vết rewrite để bạn thấy nó sửa gì."],["🧭 Cách chạy","Lần đầu nó hỏi setup (brand, identity register, format mặc định, chỗ lưu hook library + learnings) rồi NHỚ luôn; từ đó chỉ cần paste brief + 'write hooks for this brief'."],["🎒 Chuẩn bị","Input ưu tiên số 1: IDENTITY REGISTER — không phải nhân khẩu học mà là danh tính cụ thể ('người 47 tuổi tự tin đã thôi xin lỗi vì ưu tiên bản thân' khác hẳn 'người 47 tuổi hoài nghi cho rằng supplement là nhảm' — cùng demo, ra 2 bộ hook hoàn toàn khác). Kèm: format, voice, POV, thế hệ, top 3 hook type thắng 30 ngày qua."],["📌 Luật cứng","Thiếu identity register là skill KHÔNG chạy — không bao giờ generate với input bỏ trống hay tự đoán. Luật format: yapper hook 8–14 âm tiết bắt đầu giữa dòng suy nghĩ, overlay 3–8 từ."]],
+ S16:[["🎯 Nó làm gì","Script UGC nghe như MỘT con người cụ thể đang rant/confession trước camera (bắt đầu giữa dòng suy nghĩ, hơi lộn xộn, tự ngắt lời) — não người xem phải nghĩ 'mình từng thấy người thế này trên feed', không phải 'đây là ad'."],["🧭 Cách chạy",SK+", rồi nói 'write the UGC script'."],["🎒 Chuẩn bị","KHÓA persona trước khi viết 1 chữ: tuổi, văn hóa/sắc tộc, vùng miền, nghề nghiệp, cảm xúc nền hàng ngày (cô thợ tóc Latina 34 tuổi nói KHÁC HẲN chị y tá 36 tuổi). Kèm: brand + MỘT thứ sản phẩm làm được, awareness + funnel stage, hướng accent (trường bắt buộc trong brief)."],["📌 Luật cứng","Slang tối đa 10–20% — nêm nhẹ, không hóa trang. FTC cứng: creator KHÔNG claim tự dùng sản phẩm — chuyện cá nhân nằm ở phần VẤN ĐỀ, sản phẩm chỉ nhắc kiểu 'my girl put me on / nghe nói có cái app này'."]],
+ S17:[["🎯 Nó làm gì","Viết prompt AI mới theo house style của cả pack — khuôn 5 block: voice context → 5 câu hỏi mở đầu → core task → quality controls → wrap-up (TLDR + action steps + câu hỏi tiếp theo). Mọi prompt trong thư viện này đều theo khuôn đó."],["🧭 Cách chạy",SK+", rồi nói 'write the prompt' mỗi khi cần build prompt research/analysis/creative mới cho hệ thống của bạn."],["🎒 Chuẩn bị","Prompt để làm gì, public hay internal (public = không chứa client data, tự đứng được một mình), operator cần cung cấp input gì, output format mong muốn, prompt cũ nào giống nhất để làm khung."],["📌 Luật cứng","Luật số 1: không bao giờ ship prompt generic — nếu người lạ paste vào ChatGPT mà không cần context vẫn ra kết quả y hệt thì prompt quá mỏng, phải làm lại."]],
+ S18:[["🎯 Nó làm gì","30 phút từ 'không biết gì' → cheat sheet 2 phút + framework dùng được + 5 giả thuyết ứng dụng cho ĐÚNG dự án của bạn — bằng cách cho AI research board nuốt 15+ video YouTube (mix thể loại, chọn cùng bạn)."],["🧭 Cách chạy",SK+", rồi nói 'run Learn Pro'. Cần tool nuốt được YouTube (vd Poppy AI) — không có thì paste transcript thủ công vào chat."],["🎒 Chuẩn bị","Học gì, áp vào đâu, danh sách 15 video (nó đề xuất, bạn duyệt), ví dụ tham khảo, format deliverable muốn nhận, notes sẵn có."],["📌 Lưu ý","Time bar cứng: quá 30 phút nghĩa là đang research nhiều synthesis ít — cắt sớm. KHÔNG dùng cho chủ đề bạn đã là chuyên gia hoặc tra cứu vặt (cái đó dùng web search nhanh hơn)."]],
+ S19:[["🎯 Nó làm gì","Bản đồ 30 giây của CẢ HỆ THỐNG — vòng lặp vĩnh viễn: Analyze → Update learnings DB → Testing Matrix → Make ads → Hypothesis + tag → Run → lặp lại. Mỗi vòng làm batch sau khôn hơn batch trước."],["🧭 Cách chạy","ĐỌC ĐẦU TIÊN, trước mọi skill khác. Paste kèm các skill con làm project knowledge để AI luôn biết bạn đang ở bước nào của vòng lặp."],["🎒 Chuẩn bị","Setup 1 lần: đường lấy data ad account (CSV/API), learnings database (bảng: learning, ngày, confidence, thắng/thua, building blocks), testing section, naming convention cho ads (vd JD05271), minimum test window (vd 15 ngày hoặc 3x CPA)."],["📌 Luật cứng","ORDER RULE: ý tưởng test luôn ĐI SAU learnings và ĐI TRƯỚC ads. Viết ads xong mới chế test = trang trí, không phải testing. Dành thời gian cho losers ngang winners — losers dạy bạn nên DỪNG làm gì."]],
+ S20:[["🎯 Nó làm gì","Soạn hợp đồng dịch vụ creative 10 section chuẩn cho freelancer/agency: Parties, Services (kèm điều khoản out-of-scope), Term & Cancellation, Fees… → duyệt → PDF → set up e-sign (PandaDoc / DocuSign / Dropbox Sign) với field chữ ký 2 bên."],["🧭 Cách chạy",SK+", rồi nói 'draft the contract'. Flow: draft → BẠN duyệt → PDF → e-sign setup → BẠN review lần cuối và tự gửi (không bao giờ auto-send)."],["🎒 Chuẩn bị","Scope + nhịp giao tiếp, phí + payment terms, term/notice period, thông tin client, ngày hiệu lực, thông tin phía bạn, governing law."],["📌 Luật cứng","Bảo mật: số tài khoản/routing ngân hàng do BẠN TỰ điền lúc gửi — KHÔNG BAO GIỜ lưu số tài khoản trong skill, template hay bất kỳ chat AI nào."]],
+ S21:[["🎯 Nó làm gì","Invoice PDF chuyên nghiệp, đánh số tự động theo scheme [YOURCO]-[CLIENTCODE]-[YYYY]-[MM] (vd ACME-BL-2026-06) + invoice log theo dõi sent / paid / overdue để số không bao giờ trùng."],["🧭 Cách chạy",SK+", rồi nói 'make the invoice' — nếu có hợp đồng đã ký (từ Client Contract Skill) nó tự kéo số tiền, billing email, due date từ đó, chỉ hỏi phần còn thiếu."],["🎒 Chuẩn bị","Client + billing email (xác nhận đúng inbox admin@/finance@), số tiền, kỳ thanh toán, due date, dòng mô tả dịch vụ, thông tin nhận tiền của bạn."],["📌 Lưu ý","Bạn LUÔN tự gửi email invoice. 1 invoice / kỳ thanh toán; check log trước khi phát hành số mới."]],
+ S22:[["🎯 Nó làm gì","Sinh video dọc TikTok-native kiểu 'low effort' KHÔNG lộ mùi ad — lắp 1 entry từ mỗi thư viện trong 6 thư viện thành 1 prompt kỷ luật. Engine là Camera Blueprint — lớp anti-ad quyết định video giống UGC thật hay lộ quảng cáo."],["🧭 Cách chạy","Paste vào Claude hoặc AI nối với video tool (Higgsfield, Kling, Veo, Runway…). Lần đầu chỉ build 1 thứ: 5 NHÂN VẬT — 5 thư viện còn lại (settings, actions, camera, text, format) dùng nguyên si không sửa."],["🎒 Chuẩn bị","Mỗi nhân vật = tên + 1 đoạn mô tả ngoại hình + 1 ảnh reference (không cần train avatar). Trộn giới tính, độ tuổi (20s → 40s+), vibe (girl-next-door, gym bro, phụ huynh mệt mỏi, ông chú hoài nghi…)."],["📌 Luật cứng","Sau setup, mỗi video chỉ 1–2 phút: trả lời 4 câu → duyệt prompt → generate → chèn text bằng CapCut → đăng. Không tự chế/sửa entry thư viện — paste VERBATIM."]],
+ S23:[["🎯 Nó làm gì","Lộ trình creative hàng tháng xây từ KẾT QUẢ tháng trước thay vì cảm tính: review month-over-month (kèm PARKING LOT — ý tưởng đã duyệt nhưng chưa test), chẩn đoán Big-4 từng ad, angle matrix Persona → Awareness → Angle, roadmap 1 trang được design + brief theo tuần."],["🧭 Cách chạy","Paste skill rồi chạy TỪNG PHẦN — mỗi lượt 1 phase, tôn trọng các điểm dừng chờ input. Đừng dump cả skill bắt chạy 1 lượt."],["🎒 Chuẩn bị","Records của brand: Research, Learnings, Memory/Context, Testing + kết quả tests tháng trước."],["📌 Luật cứng","Mọi test phải qua CỔNG CHẨN ĐOÁN mới được vào matrix; mỗi concept dán nhãn Persona – Awareness – Angle. Kết thúc = walkthrough/Loom trình bày roadmap cho team/client."]],
+ S24:[["🎯 Nó làm gì","Gom Monthly Roadmap + toàn bộ context thành brief chiến lược TUẦN cho production team và client. Nó là WRAPPER gọi skill khác: mỗi ad chạy đủ Hook Writing (gate 9+) + Copywriting + Pre-Ship Check, từng cái một."],["🧭 Cách chạy","Paste skill + roadmap + context client, rồi nói 'write this week strategist brief'. 2 bước có HARD STOP ở giữa: Step 1 spec chiến lược cho cả slate → DỪNG verify → Step 2 mới viết script."],["🎒 Chuẩn bị","Tên client + tuần thứ mấy trong tháng (1–4) + context stack đầy đủ của client đó."],["📌 Luật cứng","MỘT AD MỘT LẦN — viết cả loạt script 1 lượt là HARD FAIL dù spec hoàn hảo, vì hook gate và copy QA không thật sự chạy trên từng ad. Step 1 tư duy phân tích (trích dẫn mọi thứ), Step 2 tư duy cảm xúc (nhập vai persona) — không làm 2 thứ cùng lúc."]],
+ S25:[["🎯 Nó làm gì","Orchestrator onboard client mới end-to-end bằng 1 câu lệnh ('Onboard [client]'): questionnaire → build workspace → chốt personas → research → confirm & handoff. Không phải tự chạy từng mảnh."],["🧭 Cách chạy","Paste vào Claude Project làm project knowledge. Lần đầu trả lời Step 0 setup; các lần sau chỉ cần intake ngắn cho từng client mới."],["🎒 Chuẩn bị","Step 0 trả lời 1 LẦN rồi nhớ mãi: tên business, chỗ đặt workspace client (Notion/Drive…), quy ước client-code, bộ research report, cấu trúc hub con, có dùng contract + invoice không."],["📌 Lưu ý","Chờ client điền xong questionnaire mới chạy Persona Gate + Research; riêng workspace setup được phép chạy song song trong lúc chờ."]],
+ S26:[["🎯 Nó làm gì","1 slide deck (Keynote / PowerPoint / Google Slides): mỗi slide = 1 concept ad — video reference bên TRÁI + 10 trường breakdown bên PHẢI (visual, avatar, hook, overlay, angle, mechanism, proof, objection, beat map, source). Vừa là bàn làm việc vừa trình được cho client."],["🧭 Cách chạy","Paste rồi nói 'set this up for me' — nó hỏi từng câu một (niche, kho reference video, deck tool, câu hỏi test tháng này, chỗ lưu), kèm lý do và default cho từng câu."],["🎒 Chuẩn bị","Kho reference video ĐÃ LƯU (folder, doc link, collection TikTok/Meta) — board chỉ lấy từ kho này, không bao giờ search platform trực tiếp. Câu hỏi test tháng này lấy từ Monthly Roadmap."],["📌 Luật cứng","BẠN chọn concept, skill chỉ build — nó không chọn thay. Beat map không bao giờ được bỏ (đó là thứ làm concept rebuild được). Khi rebuild: giữ FORM (hook mechanic, overlay, format, beat map), đổi CONTENT (avatar, claim, proof, offer). 1 board / brand / tháng."]],
+ S27:[["🎯 Nó làm gì","Native ad = 1 ảnh trông như post thường + primary text DÀI đọc như bài chia sẻ thật. Ảnh có đúng 1 nhiệm vụ: chặn ĐÚNG người và để người sai lướt qua (self-selection); text kể chuyện đủ hay để lấy click."],["🧭 Cách chạy",SK+", rồi nói 'write the native ad' — output là spec ảnh (kèm ảnh generate) + toàn bộ primary text, sẵn thả vào brief."],["🎒 Chuẩn bị","Persona/angle/awareness lấy từ strategist brief (KHÔNG tự chế angle), sản phẩm THẬT (tên, dạng viên/chai/túi, ảnh label thật), brand voice + compliance red lines, customer language thật."],["📌 Luật cứng","Ảnh là ưu tiên số 1, không gì gần bằng: KHÔNG chữ, KHÔNG logo, không product-hero shot, không ánh sáng stock. Chỉ 2 góc máy (POV cầm điện thoại / camera dựng trong phòng). Label thật bắt buộc — sai label = vứt. Khung 9:16 nhưng chủ thể đặt giữa để crop 1:1 sạch."]],
 };
 function splitContent(key,raw){
   if(!raw||key[0]!=="P") return raw;
@@ -539,15 +565,20 @@ function fillBody(item){
     slot.querySelector("pre.content").textContent=c;
   }else{
     slot.innerHTML=`${guideHTML(key)}<div class="locked-box">
-      <p>🔒 Nội dung đầy đủ đang được khóa. Nhập mật khẩu 1 lần duy nhất — trình duyệt sẽ tự nhớ.</p>
-      <button class="cbtn" onclick="unlockFlow()">Nhập mật khẩu để mở</button>
+      <p>🔒 Bí kíp đang được niêm phong. Nhập mật khẩu để tiếp cận tri thức nhân loại ✨</p>
+      <button class="cbtn" onclick="unlockFlow()">✨ Khai Mở Tinh Hoa</button>
     </div>`;
   }
 }
 function toggleItem(head){
   const item=head.parentElement;
-  item.classList.toggle("open");
-  if(item.classList.contains("open")) fillBody(item);
+  const wasOpen=item.classList.contains("open");
+  document.querySelectorAll(".item.open").forEach(x=>{ if(x!==item) x.classList.remove("open"); });
+  item.classList.toggle("open",!wasOpen);
+  if(!wasOpen){
+    fillBody(item);
+    requestAnimationFrame(()=>item.scrollIntoView({block:"nearest",behavior:"smooth"}));
+  }
 }
 async function copyItem(key,withStd,btn){
   if(!CONTENT){ unlockFlow(); return; }
@@ -586,18 +617,18 @@ async function tryUnlock(pw){
 }
 async function unlockWith(pw){
   const btn=document.getElementById("lockBtn");
-  btn.textContent="⏳ Đang mở...";
+  btn.textContent="🔮 Đang khai mở...";
   try{
     CONTENT=await tryUnlock(pw);
-    try{ localStorage.setItem("jk_pw",pw); }catch(e){}
-    btn.textContent="🔓 Đã mở khóa";
+    try{ sessionStorage.setItem("jk_pw",pw); }catch(e){}
+    btn.textContent="🔓 Tinh hoa đã khai mở";
     btn.classList.add("open-state");
     btn.onclick=null;
     document.querySelectorAll(".item.open").forEach(fillBody);
     return true;
   }catch(e){
-    try{ localStorage.removeItem("jk_pw"); }catch(e2){}
-    btn.textContent="🔒 Mở khóa nội dung";
+    try{ sessionStorage.removeItem("jk_pw"); }catch(e2){}
+    btn.textContent="🔒 Khai mở tinh hoa";
     return false;
   }
 }
@@ -620,9 +651,9 @@ async function submitPw(){
   const pw=inp.value.trim();
   if(!pw){ inp.focus(); return; }
   const sub=document.getElementById("pwSubmit");
-  sub.disabled=true; sub.textContent="⏳ Đang mở khóa...";
+  sub.disabled=true; sub.textContent="🔮 Đang khai mở...";
   const ok=await unlockWith(pw);
-  sub.disabled=false; sub.textContent="🔓 Mở khóa thư viện";
+  sub.disabled=false; sub.textContent="✨ Khai Mở Tinh Hoa";
   if(ok){
     closePwModal();
   }else{
@@ -635,9 +666,11 @@ async function submitPw(){
 document.getElementById("pwInput").addEventListener("keydown",e=>{ if(e.key==="Enter") submitPw(); });
 window.addEventListener("keydown",e=>{ if(e.key==="Escape") closePwModal(); });
 window.addEventListener("load",()=>{
+  try{ localStorage.removeItem("jk_pw"); }catch(e){}
   let s=null;
-  try{ s=localStorage.getItem("jk_pw"); }catch(e){}
-  if(s) unlockWith(s);
+  try{ s=sessionStorage.getItem("jk_pw"); }catch(e){}
+  if(s){ unlockWith(s); }
+  else{ setTimeout(unlockFlow,600); }
 });
 
 /* ---------- search & filter ---------- */
