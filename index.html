@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Strategy OS — Jakob Counts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0508; --bg2:#140a0e; --card:#170c11; --card2:#1d0f15;
+    --border:#2b161e; --border-hi:#4a1f2e;
+    --pink:#f43f6b; --pink2:#fb7185; --red:#e11d48;
+    --text:#f5e9ed; --muted:#a88793; --dim:#6b4d58;
+    --gold:#fbbf24;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'Be Vietnam Pro',system-ui,sans-serif;
+    min-height:100vh;
+    background-image:radial-gradient(ellipse 80% 50% at 50% -10%, rgba(225,29,72,.18), transparent),
+                     radial-gradient(ellipse 40% 30% at 90% 10%, rgba(244,63,107,.07), transparent);
+  }
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,5,8,.85);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav{display:flex;align-items:center;gap:12px;padding:14px 0}
+  .logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#e11d48,#f43f6b);display:flex;align-items:center;justify-content:center;font-size:18px}
+  .nav b{font-weight:800;font-size:15px}
+  .nav .links{margin-left:auto;display:flex;gap:18px;font-size:13px;color:var(--muted)}
+  .nav .links a{color:var(--muted);text-decoration:none}
+  .nav .links a:hover{color:var(--pink2)}
+  .hero{text-align:center;padding:56px 0 8px}
+  .hero .icon{width:76px;height:76px;margin:0 auto 22px;border-radius:20px;background:linear-gradient(160deg,#1d0a10,#2a0d16);border:1px solid var(--border-hi);display:flex;align-items:center;justify-content:center;font-size:38px;box-shadow:0 0 60px rgba(225,29,72,.25)}
+  h1{font-size:clamp(30px,5.5vw,52px);font-weight:800;letter-spacing:-.02em}
+  h1 .accent{background:linear-gradient(90deg,var(--pink2),var(--red));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{margin-top:12px;color:var(--pink);font-size:13px;letter-spacing:.28em;text-transform:uppercase;font-weight:600}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px}
+  .chip{border:1px solid var(--border);background:var(--card);border-radius:999px;padding:7px 15px;font-size:12.5px;color:var(--muted)}
+  .chip .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#34d399;margin-right:6px}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:38px auto 0;max-width:760px}
+  .stat{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--border);border-radius:14px;padding:22px 10px;text-align:center}
+  .stat b{display:block;font-size:34px;font-weight:800;background:linear-gradient(90deg,var(--pink2),var(--red));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat span{font-size:11px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
+  .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:46px 0 8px}
+  .search{flex:1;min-width:220px;position:relative}
+  .search input{
+    width:100%;background:var(--card);border:1px solid var(--border);border-radius:11px;
+    padding:12px 16px 12px 40px;color:var(--text);font-size:14px;font-family:inherit;outline:none;
+  }
+  .search input:focus{border-color:var(--pink)}
+  .search::before{content:'🔍';position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:13px;opacity:.6}
+  .filters{display:flex;flex-wrap:wrap;gap:8px}
+  .fbtn{background:var(--card);border:1px solid var(--border);border-radius:999px;padding:8px 15px;font-size:12.5px;color:var(--muted);cursor:pointer;font-family:inherit;transition:.15s}
+  .fbtn:hover{border-color:var(--border-hi);color:var(--text)}
+  .fbtn.on{background:linear-gradient(90deg,#e11d48,#f43f6b);border-color:transparent;color:#fff;font-weight:600}
+  .count-note{color:var(--dim);font-size:12.5px;margin:6px 2px 0}
+  section{margin-top:44px}
+  .sec-head{display:flex;align-items:center;gap:13px;padding:18px 20px;background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--border);border-radius:16px}
+  .sec-num{width:32px;height:32px;flex:none;border-radius:9px;background:linear-gradient(135deg,#e11d48,#f43f6b);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+  .sec-head h2{font-size:19px;font-weight:800}
+  .sec-head p{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .sec-head .badge{margin-left:auto;flex:none;border:1px solid var(--border-hi);color:var(--pink2);border-radius:999px;padding:5px 13px;font-size:12px;font-weight:600}
+  .group-label{margin:26px 4px 12px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+  .card{
+    background:linear-gradient(180deg,var(--card),var(--bg2));
+    border:1px solid var(--border);border-radius:14px;padding:16px 17px;
+    transition:.15s;position:relative;
+  }
+  .card:hover{border-color:var(--border-hi);transform:translateY(-1px)}
+  .card .top{display:flex;align-items:baseline;gap:9px;margin-bottom:7px}
+  .card .num{font-size:11px;font-weight:800;color:var(--dim);letter-spacing:.05em;flex:none}
+  .card .name{font-size:14.5px;font-weight:600;line-height:1.35}
+  .card .vi{font-size:13px;color:var(--muted);line-height:1.55}
+  .card .tags{margin-top:11px;display:flex;gap:6px;flex-wrap:wrap}
+  .tag{font-size:10.5px;padding:3px 9px;border-radius:999px;border:1px solid var(--border);color:var(--dim);letter-spacing:.04em}
+  .tag.hot{border-color:#7c2d12;color:var(--gold)}
+  .card.flag{border-color:#5b2436;box-shadow:0 0 24px rgba(225,29,72,.10)}
+  .card.flag .name{color:var(--pink2)}
+  .chains{display:grid;gap:12px;margin-top:16px}
+  .chain{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--border);border-radius:14px;padding:16px 18px}
+  .chain b{font-size:14px;color:var(--pink2)}
+  .chain p{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.7}
+  .chain .arrow{color:var(--dim)}
+  .note{margin-top:16px;background:rgba(251,191,36,.05);border:1px solid rgba(251,191,36,.22);border-radius:13px;padding:14px 17px;font-size:13px;color:#e7cf9a;line-height:1.6}
+  footer{margin:70px 0 34px;text-align:center;color:var(--dim);font-size:12.5px;line-height:1.8}
+  .hidden{display:none!important}
+  @media (max-width:640px){ .grid{grid-template-columns:1fr} .sec-head .badge{display:none} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">🧠</div>
+    <b>Creative Strategy OS</b>
+    <div class="links">
+      <a href="#skills">⚙️ Skills</a>
+      <a href="#prompts">📝 Prompts</a>
+      <a href="#chains">🔗 Chains</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="icon">🧠</div>
+    <h1>Creative Strategy <span class="accent">OS</span></h1>
+    <div class="sub">Jakob Counts · DTC Creative Strategy · Bản diễn giải tiếng Việt</div>
+    <div class="meta">
+      <span class="chip">💗 DTC / Ecom</span>
+      <span class="chip"><span class="dot"></span>library</span>
+      <span class="chip">82 assets verbatim</span>
+      <span class="chip">🗂 skills + prompts + chains</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>27</b><span>Skills</span></div>
+      <div class="stat"><b>54</b><span>Prompts</span></div>
+      <div class="stat"><b>35</b><span>Research Reports</span></div>
+      <div class="stat"><b>5</b><span>Chains</span></div>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <div class="search"><input id="q" type="text" placeholder="Tìm skill / prompt... (vd: hook, UGC, objection, pricing)"></div>
+    <div class="filters">
+      <button class="fbtn on" data-f="all">Tất cả</button>
+      <button class="fbtn" data-f="skill">Skills</button>
+      <button class="fbtn" data-f="exec">Execution</button>
+      <button class="fbtn" data-f="research">Research</button>
+      <button class="fbtn" data-f="util">Utilities</button>
+    </div>
+  </div>
+  <div class="count-note" id="countNote"></div>
+
+  <section id="skills">
+    <div class="sec-head">
+      <div class="sec-num">1</div>
+      <div><h2>27 OPERATOR SKILLS</h2><p>quy trình vận hành — mỗi skill là một "nhân viên ảo" đảm nhiệm 1 khâu</p></div>
+      <span class="badge">27 skills</span>
+    </div>
+    <div id="skillsBody"></div>
+  </section>
+
+  <section id="prompts">
+    <div class="sec-head">
+      <div class="sec-num">2</div>
+      <div><h2>54 PROMPTS</h2><p>paste vào AI là chạy — execution · research reports · utilities</p></div>
+      <span class="badge">54 prompts + 1 standards</span>
+    </div>
+    <div id="promptsBody"></div>
+    <div class="note">⚠️ <b>Quy tắc cứng:</b> mọi research prompt <b>14 → 53</b> bắt buộc dán khối <b>00 — Research Standards</b> lên đầu trước khi chạy. Không có nó = research không có căn cứ (ungrounded).</div>
+  </section>
+
+  <section id="chains">
+    <div class="sec-head">
+      <div class="sec-num">3</div>
+      <div><h2>5 CHAINS</h2><p>các workflow xâu chuỗi lặp lại trong hệ thống</p></div>
+      <span class="badge">5 chains</span>
+    </div>
+    <div class="chains">
+      <div class="chain"><b>🔁 Weekly Loop</b><p>Master SOP (19) <span class="arrow">→</span> Creative Analysis (06) <span class="arrow">→</span> Iteration Decision (10) <span class="arrow">→</span> Testing Matrix (13) <span class="arrow">→</span> Brief Writing (05) <span class="arrow">→</span> Pre-Ship Check (04)</p></div>
+      <div class="chain"><b>🎬 Ad Production</b><p>Brief Prep (09) <span class="arrow">→</span> Brief Writing (05) <span class="arrow">→</span> Hook Writing (15) <span class="arrow">→</span> UGC (16) / Founder (14) / Native (27) <span class="arrow">→</span> Pre-Ship Check (04)</p></div>
+      <div class="chain"><b>🔬 New Brand Research</b><p>Standards (P00) <span class="arrow">→</span> Identity Research (P14) <span class="arrow">→</span> Audience (P15) <span class="arrow">→</span> Competitor (P16) <span class="arrow">→</span> Mechanisms (P17) <span class="arrow">→</span> Awareness (P19) <span class="arrow">→</span> Language & Angles (P21)</p></div>
+      <div class="chain"><b>📅 Monthly Planning</b><p>Monthly Roadmap (23) <span class="arrow">→</span> Creative Strategist Brief (24) <span class="arrow">→</span> Testing Matrix (13)</p></div>
+      <div class="chain"><b>🤝 New Client</b><p>Onboarding Setup (25) <span class="arrow">→</span> Onboarding Interview (P11) <span class="arrow">→</span> Project Setup (P12) <span class="arrow">→</span> Contract (20) <span class="arrow">→</span> Invoice (21)</p></div>
+    </div>
+  </section>
+
+  <footer>
+    Creative Strategy OS — Jakob Counts · thư viện 82 assets · bản diễn giải tiếng Việt<br>
+    dùng nội bộ để tra cứu · nội dung gốc thuộc về tác giả
+  </footer>
+</div>
+
+<script>
+const SKILLS = [
+ {g:"🖊️ Viết Creative", items:[
+  ["02","Copywriting Skill","Copywriter direct-response cấp senior: ad copy, headline, body, CTA. Văn phong lớp 5, cụ thể thay vì chung chung, có kill-list cấm cụm từ 'mùi AI'. File lớn nhất pack.",["skill","hot"]],
+  ["03","Storytelling Skill","Đảm bảo mọi asset (ad, brief, email, landing page) đều mang câu chuyện thật, không phải danh sách tính năng.",["skill"]],
+  ["12","Yapper Ad Skill","Mỗi ngày sinh 3-5 'hạt giống ad' — mỗi cái 1 câu ý tưởng, chưa phải script. Để không bao giờ cạn ý tưởng.",["skill"]],
+  ["14","Founder Ad Skill","Ad kiểu founder nói trước camera — xây trust/authority. Hợp audience lạnh hay nghi ngờ, relaunch, brand có mission.",["skill"]],
+  ["15","Hook Writing Skill","Vừa sinh vừa chấm: viết biến thể hook, chấm rubric 50 điểm, chiều nào dưới 8 tự động viết lại.",["skill","hot"]],
+  ["16","UGC Scriptwriting Skill","Script UGC nghe như MỘT con người cụ thể đang đăng video organic, không phải đọc quảng cáo.",["skill"]],
+  ["27","Native Ads Skill","Ads 'ngụy trang organic': 1 ảnh như post thường + primary text dài đọc như bài chia sẻ thật.",["skill"]],
+ ]},
+ {g:"🔁 Phân tích & Test", items:[
+  ["19","Creative Feedback Loop (Master SOP)","XƯƠNG SỐNG cả hệ thống. Vòng lặp tuần: phân tích → rút bài học → quyết định test → làm ads → tag giả thuyết → chạy → phân tích lại.",["skill","hot"]],
+  ["06","Creative Analysis Skill","Báo cáo performance: tag MỌI ad có spend đáng kể (cả winner lẫn loser), gọi tên 3 driver chính, chấm điểm building blocks.",["skill"]],
+  ["10","Iteration Decision Skill","Nhận output Creative Analysis → quyết định cụ thể: iterate / scale / kill từng ad.",["skill"]],
+  ["13","Testing Matrix Skill","Thiết kế thí nghiệm có kiểm soát — tối đa revenue impact trên mỗi đồng testing. Đọc learnings cũ trước khi đề xuất mới.",["skill"]],
+  ["04","Pre-Ship Check Skill","CỔNG QA BẮT BUỘC — không gì được lên ad account nếu chưa pass. Gom rubric của mọi skill khác vào checklist cuối.",["skill","hot"]],
+  ["07","Format & Angle Discovery","Đào ngôn ngữ quy mô lớn (bài viết, thread, review, ticket, transcript) để tìm concept ad mới.",["skill"]],
+ ]},
+ {g:"📋 Brief & Planning", items:[
+  ["09","Brief Prep Skill","Chuẩn bị nguyên liệu cho brief: reference đối thủ, hướng visual, data context, identity grounding.",["skill"]],
+  ["05","Brief Writing Skill","Biến giả thuyết trong testing matrix thành brief production-ready — editor/designer cầm là làm được ngay.",["skill"]],
+  ["24","Creative Strategist Brief","Gom Monthly Roadmap + toàn bộ context thành 1 bản brief tổng cho designer.",["skill"]],
+  ["23","Monthly Roadmap Skill","Lộ trình creative hàng tháng từ kết quả tháng trước: test gì, thứ tự nào, cho persona nào, tại sao.",["skill"]],
+  ["26","Brainstorm Board Skill","Slide deck ý tưởng: mỗi slide = 1 concept ad, gồm video reference + breakdown 10 trường. Kiêm bảng làm việc của team.",["skill"]],
+  ["11","Research Sprint Skill","Sprint research sâu, xây knowledge base đứng sau angles, hooks, mechanisms.",["skill"]],
+ ]},
+ {g:"👔 Client Operations", items:[
+  ["25","New Client Onboarding Setup","Skill onboard client mới, nhớ câu trả lời sau lần chạy đầu.",["skill"]],
+  ["20","Client Contract Skill","Hợp đồng dịch vụ creative cho freelancer/agency, xuất PDF sẵn ký điện tử.",["skill"]],
+  ["21","Client Invoice Skill","Invoice PDF chuyên nghiệp có đánh số, cho retainer và project lẻ.",["skill"]],
+  ["01","Weekly Article Writing","Bài B2B 900-1200 từ theo giọng của chính bạn — kill-list cấm cụm từ AI, cấm em-dash, cấm câu dưới 5 từ.",["skill"]],
+  ["08","Comment Seeding Skill","Seed comment (gốc + reply) trên content organic đang viral — chốt chuyển đổi ngay trong feed.",["skill"]],
+ ]},
+ {g:"🛠️ Công cụ phụ", items:[
+  ["17","Prompt Writing Skill","Viết prompt AI mới theo đúng house style của pack: mở đầu 5 câu hỏi, voice context, quality control.",["skill"]],
+  ["18","Learn Pro Skill","Học 1 chủ đề bất kỳ trong 30 phút → framework dùng được + cheat sheet.",["skill"]],
+  ["22","UGC Video Generator Skill","Video dọc TikTok-native 'low effort' không giống ads — lắp ghép từ 6 thư viện có sẵn.",["skill"]],
+ ]},
+];
+
+const PROMPTS = [
+ {g:"⚡ A. Creative Execution (P1-13)", items:[
+  ["P01","Hook Variation Generator","Từ 1 hook đang thắng → sinh loạt biến thể giữ nguyên công thức gốc.",["exec"]],
+  ["P02","Angle Iteration","Ad thắng đang đuối? Xoay angle mới thay vì kill.",["exec"]],
+  ["P03","Static Brief Factory","Từ 1 batch angle → sản xuất hàng loạt brief static ads.",["exec"]],
+  ["P04","Winning Ad Breakdown","Mổ xẻ toàn diện 1 ad thắng (link hoặc paste transcript).",["exec"]],
+  ["P05","Creative Fatigue Diagnosis","Chẩn đoán fatigue từ 21 ngày data chia theo tuần (CPP, ROAS, CTR, thumbstop, hold rate).",["exec"]],
+  ["P06","Format Expansion","1 concept đã chứng minh → dịch sang các format khác.",["exec"]],
+  ["P07","Competitor Reverse Engineer","Bóc ngược ad thắng của đối thủ thành cấu trúc dùng được.",["exec"]],
+  ["P08","30-Day Creative Roadmap","Lộ trình test 30 ngày từ top winners + learnings 30 ngày qua.",["exec"]],
+  ["P09","New Persona Finder","Săn persona chưa khai thác từ winners hiện tại + 15-20 quote khách thật.",["exec"]],
+  ["P10","Dead Ad Revival","'Khám nghiệm tử thi' ad chết + kế hoạch hồi sinh.",["exec"]],
+  ["P11","Client Onboarding Interview","Phỏng vấn onboard client theo dạng hội thoại dẫn dắt.",["exec"]],
+  ["P12","Project Setup (Standing Instructions)","Bộ chỉ dẫn thường trực paste vào mọi project client mới.",["exec"]],
+  ["P13","AI UGC Video Generation","Khối chuẩn gắn vào mô tả cảnh khi generate video UGC (Sora/Kling/Runway/Veo).",["exec"]],
+ ]},
+ {g:"🔬 B. Research Reports (P14-48) — prepend Standards trước khi chạy", items:[
+  ["P00","Research Standards ⚠️","Khối tiêu chuẩn research: quy tắc nguồn, evidence bar. BẮT BUỘC dán lên đầu mọi prompt 14-53.",["research","hot"]],
+  ["P14","Internal Identity Research — FLAGSHIP","Map toàn bộ nội tâm buyer: 14 chiều identity (tự lừa dối, quan hệ với thất bại/quyền uy...) + 12 framework tâm lý học (Kahneman, Schwartz, Higgins...). Chạy trước mọi campaign lớn.",["research","hot"]],
+  ["P15","Audience Deep Research","Personas, quote thật, FAQ, reviews, psychographics, trigger cảm xúc, thói quen mua.",["research"]],
+  ["P16","Competitor Analysis","Positioning, messaging, giọng audience, retention, SEO/SERP, funnel của đối thủ.",["research"]],
+  ["P17","Mechanisms Report","10+ cơ chế (claimed + tiềm ẩn) so với đối thủ, dịch thành benefit.",["research"]],
+  ["P18","Tone & Voice Research","Chưng cất brand voice + 3 giọng persona riêng từ reviews và ads đối thủ.",["research"]],
+  ["P19","Awareness Level Research","5 tầng awareness của Schwartz: ngôn ngữ, niềm tin, objection, chiến lược từng tầng.",["research"]],
+  ["P20","Deep Research Report","Deep-dive chiến lược tổng: mechanisms, use cases, sentiment, dreams/fears, positioning.",["research"]],
+  ["P21","Customer Language & Creative Angles","Audit ngôn ngữ 5 lớp + trích angle, theo khung Schwartz / Ogilvy / Halbert.",["research"]],
+  ["P22","Multiple Identity Personas","Các cụm identity chồng lấn thật — cho audience đa sở thích.",["research"]],
+  ["P23","UGC Creators Report","Cách authority figure hành xử trên camera; chọn creator nào phù hợp.",["research"]],
+  ["P24","Google SERP + Creative Report","Bản đồ SERP theo query của niche; chỗ nào brand chen creative vào thắng được.",["research"]],
+  ["P25","Advertorial / Long-Form Research","Research phục vụ advertorial / creative kiểu báo chí.",["research"]],
+  ["P26","Insider Information Report","Người trong ngành biết gì mà người ngoài không biết — theo từng persona.",["research"]],
+  ["P27","Audience Sophistication","Map thị trường theo 5 giai đoạn sophistication của Schwartz.",["research"]],
+  ["P28","Objection Archaeology","'Khảo cổ' 50-100 objection nguyên văn, phân loại đầy đủ.",["research","hot"]],
+  ["P29","Conversion Catalyst Report","Tìm đúng khoảnh khắc/bằng chứng khiến 'đang cân nhắc' thành 'mua ngay'.",["research"]],
+  ["P30","Language Mining","Từ, cụm từ, ẩn dụ CHÍNH XÁC mà audience dùng.",["research"]],
+  ["P31","Before/After Transformation","Trước → trigger → chuyển đổi → sau + quote chuyển hóa nguyên văn.",["research"]],
+  ["P32","Platform-Specific Behavior","Hành vi từng nền tảng, trigger tương tác, format nào chạy được ở đâu.",["research"]],
+  ["P33","Emotional Journey Mapping","Cung cảm xúc đầy đủ: từ nhận ra vấn đề → sau khi mua.",["research"]],
+  ["P34","Trigger Event Research","Biến cố cuộc sống nào khiến người ta bắt đầu tìm mua (chia tay, sinh con, khủng hoảng...).",["research"]],
+  ["P35","Social Proof Hierarchy","Loại bằng chứng nào audience này THỰC SỰ tin, xếp hạng.",["research"]],
+  ["P36","Abandonment Autopsy","Lý do thật của bỏ giỏ, hủy đơn, churn.",["research"]],
+  ["P37","Storytelling & Narrative Resonance","Dạng cốt truyện nào chạm audience này (cung Vonnegut, hero's journey).",["research"]],
+  ["P38","Consumption & Comparison Shopping","Hành trình mua chi li: mở tab nào, so sánh gì, hỏi câu gì.",["research"]],
+  ["P39","Fear/Hope Ratio","Cân bằng sợ hãi vs hy vọng → creative nên đánh hướng nào.",["research"]],
+  ["P40","Inner Monologue / Self-Talk","Lời độc thoại nội tâm nguyên văn của khách ở từng chặng hành trình.",["research"]],
+  ["P41","Product Stack & Purchase Sequence","Họ mua gì trước/sau sản phẩm mình; mình nằm đâu trong stack.",["research"]],
+  ["P42","Purchasing Pattern & Decision Timeline","Timeline từ biết → mua; cái gì tăng tốc, cái gì làm khựng.",["research"]],
+  ["P43","Anti-Persona Report","Sản phẩm KHÔNG dành cho ai — lọc khách không phù hợp từ trước khi mua.",["research"]],
+  ["P44","Content Consumption Preferences","Audience thích video / text / audio / ảnh, độ dài và độ sâu nào.",["research"]],
+  ["P45","Value Perception & Pricing Psychology","Audience nghĩ về giá và giá trị thế nào, bằng chính ngôn ngữ của họ.",["research"]],
+  ["P46","Regret & Mistake Analysis","Khách ước gì biết sớm hơn; sai lầm nào cần chặn trước trong creative.",["research"]],
+  ["P47","Media Diet & Influence Map","Họ lấy thông tin ở đâu, ai ảnh hưởng họ, nên hợp tác với ai.",["research"]],
+  ["P48","Do's and Don'ts","Playbook 'Nên làm / Cấm làm' tái sử dụng cho 1 brand cụ thể.",["research"]],
+ ]},
+ {g:"🧰 C. Utilities & Builds (P49-54)", items:[
+  ["P49","Prompt Style Memory","House style — khuôn 5 block mà mọi prompt trong pack tuân theo. Dạy AI viết prompt mới cùng phong cách.",["util"]],
+  ["P50","AI UGC Prompt Builder","Phỏng vấn 5 câu → xuất prompt video UGC paste thẳng vào Sora/Kling/Veo/Higgsfield.",["util","hot"]],
+  ["P51","FACS Reference","Đủ 49 mã biểu cảm khuôn mặt (Ekman/Friesen) — điều khiển chính xác nét mặt trong AI video.",["util","hot"]],
+  ["P52","Beginner Automation Coach","Dẫn người mới xây automation đầu tiên chạy được.",["util"]],
+  ["P53","Learn Pro","Điều khiển Poppy AI + browser quét 15+ nguồn → framework + hướng đi.",["util"]],
+  ["P54","Build Your Own OS Calendar","Prompt build: tạo LỊCH LÀM VIỆC thực tế dùng được, không phải báo cáo.",["util"]],
+ ]},
+];
+
+function cardHTML(it){
+  const [num,name,vi,tags]=it;
+  const hot = tags.includes("hot");
+  const tagHtml = tags.filter(t=>t!=="hot").map(t=>{
+    const label={skill:"SKILL",exec:"EXECUTION",research:"RESEARCH",util:"UTILITY"}[t]||t;
+    return `<span class="tag">${label}</span>`;
+  }).join("") + (hot?`<span class="tag hot">★ ĐÁNG CHÚ Ý</span>`:"");
+  return `<div class="card${hot?' flag':''}" data-type="${tags[0]}" data-text="${(num+' '+name+' '+vi).toLowerCase().replace(/"/g,'')}">
+    <div class="top"><span class="num">${num}</span><span class="name">${name}</span></div>
+    <div class="vi">${vi}</div>
+    <div class="tags">${tagHtml}</div>
+  </div>`;
+}
+function renderGroups(data, mount){
+  document.getElementById(mount).innerHTML = data.map(gr=>
+    `<div class="group-block"><div class="group-label">${gr.g}</div><div class="grid">${gr.items.map(cardHTML).join("")}</div></div>`
+  ).join("");
+}
+renderGroups(SKILLS,"skillsBody");
+renderGroups(PROMPTS,"promptsBody");
+
+const cards=[...document.querySelectorAll(".card")];
+const note=document.getElementById("countNote");
+let activeFilter="all";
+function apply(){
+  const q=document.getElementById("q").value.toLowerCase().trim();
+  let shown=0;
+  cards.forEach(c=>{
+    const okF = activeFilter==="all" || c.dataset.type===activeFilter;
+    const okQ = !q || c.dataset.text.includes(q);
+    c.classList.toggle("hidden", !(okF&&okQ));
+    if(okF&&okQ) shown++;
+  });
+  document.querySelectorAll(".group-block").forEach(g=>{
+    g.classList.toggle("hidden", g.querySelectorAll(".card:not(.hidden)").length===0);
+  });
+  note.textContent = `Hiển thị ${shown} / ${cards.length} assets`;
+}
+document.getElementById("q").addEventListener("input",apply);
+document.querySelectorAll(".fbtn").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".fbtn").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on"); activeFilter=b.dataset.f; apply();
+}));
+apply();
+</script>
+</body>
+</html>
