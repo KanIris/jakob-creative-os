@@ -15,6 +15,7 @@
     --amber:#a97e14;
   }
   *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
   body{
     background:var(--bg); color:var(--text);
     font-family:'Be Vietnam Pro',system-ui,sans-serif;
@@ -42,10 +43,13 @@
   .chip{border:1px solid var(--border);background:var(--card);border-radius:999px;padding:7px 15px;font-size:12.5px;color:var(--muted)}
   .chip .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#34a06a;margin-right:6px}
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:38px auto 0;max-width:760px}
-  .stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px 10px;text-align:center;box-shadow:0 2px 10px rgba(138,104,28,.05)}
+  .stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px 10px;text-align:center;box-shadow:0 2px 10px rgba(138,104,28,.05);cursor:pointer;transition:.15s}
+  .stat:hover{transform:translateY(-2px);border-color:var(--border-hi);box-shadow:0 8px 22px rgba(138,104,28,.14)}
+  .stat em{display:block;margin-top:6px;font-size:10px;color:var(--gold2);font-style:normal}
   .stat b{display:block;font-size:34px;font-weight:700;font-family:'Playfair Display',Georgia,serif;color:var(--gold)}
   .stat span{font-size:11px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
-  .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:46px 0 8px}
+  .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:46px 0 0;position:sticky;top:63px;z-index:40;background:var(--bg);padding:10px 0}
+  @media (max-width:640px){ .toolbar{position:static} }
   .search{flex:1;min-width:220px;position:relative}
   .search input{
     width:100%;background:var(--card);border:1px solid var(--border);border-radius:11px;
@@ -120,10 +124,10 @@
       <span class="chip">🗂 skills + prompts + chains</span>
     </div>
     <div class="stats">
-      <div class="stat"><b>27</b><span>Skills</span></div>
-      <div class="stat"><b>54</b><span>Prompts</span></div>
-      <div class="stat"><b>35</b><span>Research Reports</span></div>
-      <div class="stat"><b>5</b><span>Chains</span></div>
+      <div class="stat" onclick="goTo('skills','skill')"><b>27</b><span>Skills</span><em>bấm để xem ↓</em></div>
+      <div class="stat" onclick="goTo('prompts','all')"><b>54</b><span>Prompts</span><em>bấm để xem ↓</em></div>
+      <div class="stat" onclick="goTo('prompts','research')"><b>35</b><span>Research Reports</span><em>bấm để xem ↓</em></div>
+      <div class="stat" onclick="goTo('chains','all')"><b>5</b><span>Chains</span><em>bấm để xem ↓</em></div>
     </div>
   </div>
 
@@ -320,13 +324,25 @@ function apply(){
   document.querySelectorAll(".group-block").forEach(g=>{
     g.classList.toggle("hidden", g.querySelectorAll(".card:not(.hidden)").length===0);
   });
-  note.textContent = `Hiển thị ${shown} / ${cards.length} assets`;
+  const q2=document.getElementById("q").value.trim();
+  note.innerHTML = `Hiển thị ${shown} / ${cards.length} assets` + (q2&&shown?` — <a href="#" onclick="jumpToResult();return false" style="color:var(--gold);font-weight:600">xem kết quả ↓</a>`:"");
+}
+function setFilter(f){
+  activeFilter=f;
+  document.querySelectorAll(".fbtn").forEach(x=>x.classList.toggle("on",x.dataset.f===f));
+  apply();
+}
+function goTo(id,f){
+  setFilter(f);
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+function jumpToResult(){
+  const first=document.querySelector(".card:not(.hidden)");
+  if(first) first.scrollIntoView({behavior:"smooth",block:"center"});
 }
 document.getElementById("q").addEventListener("input",apply);
-document.querySelectorAll(".fbtn").forEach(b=>b.addEventListener("click",()=>{
-  document.querySelectorAll(".fbtn").forEach(x=>x.classList.remove("on"));
-  b.classList.add("on"); activeFilter=b.dataset.f; apply();
-}));
+document.getElementById("q").addEventListener("keydown",e=>{ if(e.key==="Enter") jumpToResult(); });
+document.querySelectorAll(".fbtn").forEach(b=>b.addEventListener("click",()=>setFilter(b.dataset.f)));
 apply();
 </script>
 </body>
