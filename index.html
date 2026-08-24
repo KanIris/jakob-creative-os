@@ -101,6 +101,10 @@
   .cbtn.alt:hover{background:var(--accent-soft)}
   .charcount{margin-left:auto;font-size:11.5px;color:var(--dim)}
   .std-hint{margin:10px 17px 0;font-size:12px;color:#6b5310;background:#fffbec;border:1px solid #e8d9a8;border-radius:9px;padding:8px 12px;line-height:1.5}
+  .guide-box{margin:12px 17px 0;padding:11px 14px;background:var(--accent-soft);border:1px solid var(--border-hi);border-radius:10px}
+  .guide-row{font-size:13px;line-height:1.7;color:var(--text)}
+  .guide-row+.guide-row{margin-top:7px}
+  .guide-row b{color:var(--accent)}
   pre.content{
     margin:12px 17px 16px;padding:16px;background:#fff;border:1px solid var(--border);
     border-radius:11px;font-family:Consolas,'Courier New',monospace;font-size:12.5px;
@@ -358,6 +362,77 @@ const PROMPTS = [
  ]},
 ];
 
+/* ---------- Hướng dẫn sử dụng (diễn giải tiếng Việt) ---------- */
+const RS="Bấm nút ⭐ Copy kèm Standards để lấy sẵn khối Research Standards dán trên đầu, rồi paste vào Claude hoặc Perplexity Deep Research.";
+const Q5="Prompt sẽ mở đầu bằng 5 câu hỏi intake — trả lời xong nó mới xuất báo cáo.";
+const PROMPT_GUIDES={
+ P00:[["📌 Đây là gì","Không phải prompt chạy riêng — đây là khối tiêu chuẩn research. Copy TOÀN BỘ khối và dán lên ĐẦU bất kỳ prompt nào từ 14–53 trước khi chạy."],["💡 Mẹo","Ở các prompt 14–53, chỉ cần bấm nút ⭐ Copy kèm Standards — trang sẽ tự dán khối này lên đầu cho bạn."]],
+ P01:[["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT, điền hết mọi ô [ngoặc vuông] rồi gửi."],["🎒 Chuẩn bị","Hook đang thắng + taxonomy của ad (angle, persona, awareness level, emotional trigger, identity cue) + 2–3 quy tắc brand voice."],["⏱️ Khi nào dùng","Concept đang chạy tốt và bạn muốn 5 biến thể hook để test."]],
+ P02:[["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT, điền hết các ô [ngoặc vuông]."],["🎒 Chuẩn bị","Taxonomy đầy đủ của ad thắng + một ghi chú vì sao bạn chọn xoay angle thay vì kill ad."],["⏱️ Khi nào dùng","Biến thể hook đã cạn nhưng angle vẫn còn tín hiệu tốt."]],
+ P03:[["🧭 Cách chạy","Paste vào Claude (ChatGPT cũng chạy — bỏ bước sinh ảnh hoặc dùng tool ảnh riêng)."],["🎒 Chuẩn bị","Brand + ngành hàng, batch angle đang sản xuất, 2–3 quy tắc brand voice, câu identity cue, các khối content sẵn có (headline, benefit, social proof, offer), menu layout tham chiếu, và danh sách content thô đang có (ảnh sản phẩm, b-roll, footage founder/talent)."],["⏱️ Khi nào dùng","Cần 10–25 brief static sẵn giao designer trong một lần chạy — công cụ tiết kiệm thời gian nhất pack."]],
+ P04:[["🧭 Cách chạy","Paste vào Claude — tốt nhất khi AI có browser access (Claude with Chrome / Cowork); không có thì tự paste transcript + mô tả hình ảnh của ad."],["🎒 Chuẩn bị","URL hoặc file của ad, brand + ngành hàng, số liệu performance."],["⏱️ Khi nào dùng","Một ad vượt ngưỡng winner và bạn muốn giải mã chính xác vì sao nó thắng."]],
+ P05:[["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT."],["🎒 Chuẩn bị","Tên/ID ad, taxonomy, và 21 ngày data chia theo tuần (CPP, ROAS, CTR, thumbstop, hold rate, số ngày chạy) — paste số liệu vào, hoặc đưa URL dashboard nếu AI có browser."],["⏱️ Khi nào dùng","Ad thắng có CPP / ROAS / thumbstop giảm dần trong cửa sổ 7 ngày."]],
+ P06:[["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT. Nếu AI xem được video (vd Gemini) thì để nó tự trích taxonomy; không thì tự paste transcript."],["🎒 Chuẩn bị","Ad đã chứng minh (URL, file, hoặc transcript + mô tả hình ảnh) + 2–3 quy tắc brand voice."],["⏱️ Khi nào dùng","Concept đã thắng ở một format và bạn muốn test nó ở các format khác."]],
+ P07:[["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT."],["🎒 Chuẩn bị","Ad đối thủ (URL hoặc mô tả), category + positioning của đối thủ, bằng chứng nó là winner (thời gian đốt tiền, tuổi thọ trong ad library, creator endorsement), và brand + ngành của mình."],["⏱️ Khi nào dùng","Có nguồn tin cậy chỉ điểm ad thắng của đối thủ, hoặc bạn đang soi spy tools (Meta Ad Library, TikTok Creative Center, tool trả phí…)."]],
+ P08:[["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT."],["🎒 Chuẩn bị","Top 3–5 winners kèm taxonomy + số liệu, learnings 30 ngày test vừa rồi (combo thắng lẫn thua), mục tiêu tháng tới, seasonality, mức spend, chỉ tiêu concept mỗi tuần."],["⏱️ Khi nào dùng","Cuối tháng, hoặc khi bắt đầu client mới."]],
+ P09:[["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT."],["🎒 Chuẩn bị","Personas hiện tại, winners hiện tại (taxonomy + identity cue), và 15–20 quote khách NGUYÊN VĂN từ reviews, ticket support, DM, sales call."],["⏱️ Khi nào dùng","Persona hiện tại đã max và bạn đang săn audience mới. Nên chạy mỗi quý."]],
+ P10:[["🧭 Cách chạy","Paste vào Claude hoặc ChatGPT."],["🎒 Chuẩn bị","Ad chết (URL, file hoặc transcript), số liệu performance, lý do nó bị flag, và learnings 60 ngày test gần nhất."],["⏱️ Khi nào dùng","Một ad kém đáng được khám nghiệm trước khi xóa hẳn."]],
+ P11:[["🧭 Cách chạy","Gồm 2 phần: Phần A là cả hệ thống onboarding (workflow bao quanh prompt); Phần B là prompt phỏng vấn dạng hội thoại — paste vào Claude/ChatGPT khi muốn dẫn client onboard trực tiếp thay vì gửi form."],["🎒 Chuẩn bị","Chỉ cần tên công ty client + người liên hệ chính."],["📌 Lưu ý","Có 3 câu hỏi BẮT BUỘC ở mọi lần onboarding — chúng moi ra động lực thật của founder, bộ lọc giá trị, và nỗi lo chưa nói ra (thành risk register 90 ngày của bạn)."]],
+ P12:[["🧭 Cách chạy","Paste MỘT LẦN vào ô Project Instructions của mỗi project client mới trong Claude (Projects / Cowork). Thay các ô [ngoặc] bằng tên trang/doc trong workspace của bạn trước khi lưu — không cần input gì thêm."],["⏱️ Khi nào dùng","Mỗi project client mới — đây là chỉ dẫn thường trực định hình mọi chat trong project."]],
+ P13:[["🧭 Cách chạy","Đây là prompt cho VIDEO TOOL, không phải chat. Viết mô tả cảnh 2–3 câu → gắn nguyên khối UGC chuẩn (không sửa) → paste cả cụm vào Sora, Kling, Runway, Higgsfield… ở chế độ direct-prompt."],["🎒 Chuẩn bị","Quyết định trước: nhân vật, bối cảnh, và cảm xúc (hoặc mã FACS — xem P51)."],["💡 Mẹo","Thay từ cảm xúc (happy/sad/angry…) bằng mã FACS AU — AI video render vi biểu cảm thật từ mã AU, còn từ cảm xúc chỉ cho ra mặt kiểu stock-photo."]],
+ P14:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Prompt research chủ lực của pack — map toàn bộ nội tâm buyer qua 14 chiều identity, 12 framework tâm lý học, cultural alignment và multi-identity priority."],["⏱️ Khi nào dùng","Trước mọi campaign lớn, khi onboard client mới, hoặc khi pivot positioning."]],
+ P15:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Báo cáo audience toàn diện — personas, comment và quote khách thật, FAQ, reviews, testimonials, psychographics, trigger cảm xúc, thói quen mua, độc thoại nội tâm."]],
+ P16:[["🧭 Cách chạy","Bấm ⭐ Copy kèm Standards, paste vào Claude (tốt nhất có browser access để soi ad library + review sites) hoặc Perplexity Deep Research. Mở đầu bằng 6 câu hỏi intake."],["🎯 Nó làm gì","Phân tích đối thủ đầy đủ — positioning, messaging, giọng audience, retention, SEO/SERP, awareness ladder, mổ creative, map funnel, và các nước đi kill-shot riêng cho brand."]],
+ P17:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Tìm, kiểm chứng và vũ khí hóa ít nhất 10 mechanisms (công khai + tiềm ẩn) của sản phẩm so với đối thủ — dịch từng mechanism thành benefit, trigger, angle, hook."]],
+ P18:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Chưng cất brand voice + 3 giọng persona riêng biệt từ review thật, ads đối thủ và tín hiệu văn hóa. Output cắm thẳng vào AI khác để viết content đúng voice."]],
+ P19:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Map hành trình khách qua đủ 5 tầng awareness của Schwartz — ngôn ngữ, niềm tin, objection và chiến lược marketing từng tầng, kèm tầng bonus Lapsed/Jaded để re-engage."]],
+ P20:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Deep-dive chiến lược tổng — tóm tắt sản phẩm, mechanisms, use cases, sentiment, audience theo use case, dreams/fears, awareness, đối thủ, positioning, Life Force 8, hướng creative."]],
+ P21:[["🧭 Cách chạy","Bấm ⭐ Copy kèm Standards, paste vào Claude hoặc ChatGPT KÈM reviews của khách (paste thẳng vào, hoặc chỉ AI tới platform reviews). Mở đầu 5 câu intake rồi nó chạy audit 5 lớp."],["🎯 Nó làm gì","Audit ngôn ngữ khách 5 lớp + trích creative angles, dưới góc nhìn hội đồng huyền thoại direct-response (Schwartz, Ogilvy, Hopkins, Halbert). Chỉ dùng ngôn ngữ có trong review thật — không bịa."]],
+ P22:[["🧭 Cách chạy",RS+" Trước khi chạy, chốt sẵn 3 identity chồng lấn muốn research (vd: Christian + thợ săn + người cha). "+Q5],["🎯 Nó làm gì","Research cho audience mang nhiều identity chồng lấn — tìm các cụm chồng lấn CÓ THẬT ngoài đời, không phải cụm lý thuyết."]],
+ P23:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Chỉ ra authority figure thật hành xử thế nào trên camera, cách người không phải chuyên gia mượn tín hiệu authority một cách ethical, nên tuyển UGC creator nào và họ cần nhìn/nói/set up ra sao, audience đang tin sẵn creator + format nào."]],
+ P24:[["🧭 Cách chạy","Bấm ⭐ Copy kèm Standards, paste vào Claude (tốt nhất có web access) hoặc Perplexity Deep Research. "+Q5],["🎯 Nó làm gì","Phân tích SERP hiện tại cho các query lớn của niche — chỉ ra chỗ nào creative của brand (video / static / landing page) chen vào được một cách thực tế."]],
+ P25:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Research phục vụ creative kiểu advertorial — content dài, kể chuyện như bài báo chứ không như quảng cáo. Dùng khi brand cần độ tin editorial cho cold traffic."]],
+ P26:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Đào những gì người trong ngành biết mà người ngoài không — hidden truths, kiến thức underground, tribal wisdom. Nêu đúng thứ này trong creative là phát tín hiệu người trong hội."]],
+ P27:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Map sophistication của audience theo 5 giai đoạn Schwartz (direct claim → identification). Khác awareness: đo mức độ thị trường đã chai với category, không phải mức nhận thức vấn đề."]],
+ P28:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Khai quật và phân loại MỌI objection, do dự, lo ngại đang chặn mua hoặc gây churn — 50–100 objection nguyên văn, sắp theo decision stage, sophistication và loại."]],
+ P29:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Tìm đúng khoảnh khắc / bằng chứng / trải nghiệm khiến khách từ đang cân nhắc lật sang phải mua NGAY — map aha moments, cú chuyển cảm xúc, timeline từ biết đến mua."]],
+ P30:[["🧭 Cách chạy",RS+" Trả lời 5 câu intake xong nó xuất một swipe file copywriting."],["🎯 Nó làm gì","Trích CHÍNH XÁC từ, cụm từ, ẩn dụ, mô tả cảm xúc và pattern giao tiếp audience dùng khi nói về vấn đề, kết quả mong muốn và trải nghiệm của họ."]],
+ P31:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Map transformation cụ thể khách trải qua — trạng thái trước, trigger, giai đoạn chuyển, trạng thái sau, proof points và câu chuyện chuyển hóa nguyên văn. Nuôi hook before/after, testimonial ads."]],
+ P32:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Theo từng nền tảng: audience này hành xử ra sao, tiêu thụ gì, cái gì khiến họ tương tác vs lướt qua, và format ad nào thực sự chạy được."]],
+ P33:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Map trọn cung cảm xúc từ lúc mới nhận ra vấn đề đến sau khi mua — điểm uốn, quote founder/authority, nhịp cảm xúc từng chặng. Giúp creative chạm đúng khoảnh khắc cảm xúc."]],
+ P34:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Tìm các biến cố, khoảnh khắc, cú ngộ ra cụ thể khiến audience BẮT ĐẦU đi tìm giải pháp — nuôi targeting theo trigger và creative đúng thời điểm."]],
+ P35:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Xếp hạng các loại social proof THỰC SỰ lay động audience này, từ đáng tin nhất xuống thấp nhất — vì không phải proof nào cũng có giá trị như nhau."]],
+ P36:[["🧭 Cách chạy",RS+" "+Q5+" Có data nội bộ (exit survey, note hủy đơn, ticket support) thì paste vào — báo cáo sẽ tốt hơn hẳn."],["🎯 Nó làm gì","Tìm lý do THẬT khiến người ta bỏ giỏ, hủy subscription, ngừng dùng sản phẩm — moi từ support log, exit interview, churn survey và complaint công khai, không phải lý do bề mặt."]],
+ P37:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Map các dạng cốt truyện và cấu trúc narrative cộng hưởng với audience — dựa trên story arcs của Vonnegut, hero's journey của Campbell, và khẩu vị kể chuyện riêng của niche."]],
+ P38:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Audience này THẬT SỰ mua sắm, research, so sánh, quyết định thế nào — path to purchase chi li: vào platform nào, mở tab gì, hỏi câu gì, xem content gì."]],
+ P39:[["🧭 Cách chạy",RS+" "+Q5],["🎯 Nó làm gì","Đo cán cân sợ hãi (mất mát, rủi ro, lo âu) vs hy vọng (khát vọng, cơ hội) trong cách audience nghĩ và nói — quyết định creative nên đánh loss-frame hay gain-frame."]],
+ P40:[["🧭 Cách chạy",RS+" Điền [BRAND/PRODUCT] và [NICHE] trước khi chạy."],["🎯 Nó làm gì","Ghi lại NGUYÊN VĂN cuộc độc thoại trong đầu khách ở từng chặng hành trình — những nghi ngờ, tự cho phép, biện minh và dịch chuyển identity."]],
+ P41:[["🧭 Cách chạy",RS+" Thay [PRODUCT] (và [BRAND], [NICHE] nếu muốn) bằng sản phẩm cụ thể mỗi lần chạy."],["🎯 Nó làm gì","Map chuỗi sản phẩm/dịch vụ/tool khách dùng TRƯỚC và SAU khi mua sản phẩm của bạn — vị trí thật của mình trong buyer journey, từ data thật (reviews, Reddit, forums, social, blogs)."]],
+ P42:[["🧭 Cách chạy",RS+" Điền [BRAND/PRODUCT] và [NICHE]. Có analytics (thời gian từ click đầu đến lúc mua) thì paste vào cho báo cáo sắc hơn."],["🎯 Nó làm gì","Map timeline chính xác từ lần đầu biết đến lúc mua — và cái gì tăng tốc, cái gì làm khựng timeline đó."]],
+ P43:[["🧭 Cách chạy",RS+" Điền [BRAND/PRODUCT] và [NICHE]. Có refund reasons, churn data, ticket giận dữ thì paste vào."],["🎯 Nó làm gì","Định nghĩa sản phẩm KHÔNG dành cho ai và vì sao — lọc khách bad-fit ngay từ marketing, trước khi họ thành refund, churn và review 1 sao."]],
+ P44:[["🧭 Cách chạy",RS+" Điền [BRAND/PRODUCT] và [NICHE]."],["🎯 Nó làm gì","Cho biết audience thích video, text, audio hay ảnh — độ sâu và độ dài nào — để bạn ngừng sản xuất format họ bỏ qua."]],
+ P45:[["🧭 Cách chạy",RS+" Điền [BRAND/PRODUCT] và [NICHE]."],["🎯 Nó làm gì","Hé lộ cách audience nghĩ về giá, giá trị và tiền bạc — để frame pricing bằng ngôn ngữ CỦA HỌ thay vì của mình."]],
+ P46:[["🧭 Cách chạy",RS+" Điền [BRAND/PRODUCT] và [NICHE]."],["🎯 Nó làm gì","Moi ra những gì khách ước biết sớm hơn, sai lầm họ đã mắc, điều họ sẽ làm khác — để marketing và onboarding giúp prospect né trước các sai lầm đó."]],
+ P47:[["🧭 Cách chạy",RS+" Điền [BRAND/PRODUCT] và [NICHE]."],["🎯 Nó làm gì","Map chính xác audience lấy thông tin ở đâu, ai ảnh hưởng họ, content/creator nào định hình worldview của họ — kèm gợi ý nên hợp tác với ai."]],
+ P48:[["🧭 Cách chạy","Nên bấm ⭐ Copy kèm Standards (khuyến nghị — để bộ quy tắc bám data audience thật). Paste vào Claude hoặc ChatGPT, điền 4 ô [ngoặc] ở đầu prompt."],["🎯 Nó làm gì","Xuất báo cáo Nên làm / Cấm làm — playbook nội bộ tái sử dụng cho creator, editor, copywriter đang làm một client/brand cụ thể."]],
+ P49:[["🧭 Cách dùng","KHÔNG phải prompt chạy một lần — đây là style guide thường trực. Lưu thành một trang trong workspace (Notion, Drive, hoặc Claude Project knowledge) và tham chiếu mỗi khi build prompt MỚI. Cập nhật dần như living doc."],["🎯 Nó làm gì","House style của mọi prompt trong hệ thống — khuôn 5 block mà mọi research prompt tuân theo. Dùng nó để tự build prompt của riêng bạn."]],
+ P50:[["🧭 Cách chạy","Paste vào Claude, ChatGPT hoặc AI chat bất kỳ. Không cần chuẩn bị gì — nó phỏng vấn bạn 5 câu nhanh rồi xuất prompt video UGC paste thẳng vào Sora, Kling, Runway, Seedance, Veo."],["⏱️ Khi nào dùng","Cần clip AI UGC trông như người thật tự quay bằng điện thoại, không phải commercial bóng bẩy."]],
+ P51:[["🧭 Cách dùng","Đây là bảng tra cứu, không phải prompt chat. Để cạnh mình khi viết prompt AI video (Higgsfield, Sora, Kling, Runway, Veo, Seedance) — thay từ cảm xúc bằng mã Action Unit tương ứng."],["🎯 Nó làm gì","Đủ 49 mã FACS (Ekman & Friesen 1978 — chuẩn Hollywood dùng) để điều khiển chính xác vi biểu cảm khuôn mặt trong AI video."]],
+ P52:[["🧭 Cách chạy","Copy nguyên khối prompt, paste vào một chat Claude Cowork mới (Claude.ai có connected tools cũng chạy). Trả lời câu hỏi lần lượt — khoảng 10–20 phút là có một automation chạy được."],["⏱️ Khi nào dùng","Cho người mới hoàn toàn — bạn bè, gia đình, client, ai chưa từng dùng Cowork."]],
+ P53:[["🧭 Cách chạy","Paste NGUYÊN prompt vào Claude (Cowork hoặc Claude.ai có browser) — đừng cắt phần đầu. Cần tài khoản Poppy AI (free tier tại app.getpoppy.ai) + mọi notes/research sẵn có về chủ đề."],["🎯 Nó làm gì","Điều khiển Poppy AI + browser research 15+ content về chủ đề bạn đang học, rồi trả về framework, hướng đi thực dụng và 5 giả thuyết ứng dụng rút từ bằng chứng thật."]],
+ P54:[["📌 Loại","Build prompt — nó tạo ra một artifact chạy được, không phải báo cáo research."],["🧭 Cách chạy","Paste khối prompt vào Claude. Nó phỏng vấn bạn vài phút rồi build một file lịch HTML duy nhất tự chạy tuần của bạn — việc lặp lại tự hiện, kéo để dời, click để tick, tự nhớ."],["⏱️ Khi nào dùng","Đang chạy nhiều client theo chu kỳ tháng và tháng nào cũng phải ghép lại cùng một lịch bằng tay."]],
+};
+function splitContent(key,raw){
+  if(!raw||key[0]!=="P") return raw;
+  const m=/\bPROMPT:[^\S\n]*\n/.exec(raw);
+  return m?raw.slice(m.index+m[0].length).replace(/^\s+/,""):raw;
+}
+function guideHTML(key){
+  const g=PROMPT_GUIDES[key];
+  if(!g) return "";
+  return `<div class="guide-box">${g.map(r=>`<div class="guide-row"><b>${r[0]}:</b> ${r[1]}</div>`).join("")}</div>`;
+}
+
 function contentKey(num,isSkill){ return isSkill ? ("S"+num) : num; }
 function needsStandards(num){
   if(!num.startsWith("P")) return false;
@@ -399,9 +474,10 @@ function fillBody(item){
   const slot=item.querySelector(".body-slot");
   const key=item.dataset.key;
   if(CONTENT){
-    const c=CONTENT[key]||"⚠️ Không tìm thấy nội dung.";
+    const c=splitContent(key,CONTENT[key])||"⚠️ Không tìm thấy nội dung.";
     const std=needsStandards(key);
     slot.innerHTML=`
+      ${guideHTML(key)}
       <div class="copybar">
         <button class="cbtn" data-label="📋 Copy prompt" onclick="copyItem('${key}',false,this)">📋 Copy prompt</button>
         ${std?`<button class="cbtn alt" data-label="⭐ Copy kèm Standards" onclick="copyItem('${key}',true,this)">⭐ Copy kèm Standards</button>`:""}
@@ -411,7 +487,7 @@ function fillBody(item){
       <pre class="content"></pre>`;
     slot.querySelector("pre.content").textContent=c;
   }else{
-    slot.innerHTML=`<div class="locked-box">
+    slot.innerHTML=`${guideHTML(key)}<div class="locked-box">
       <p>🔒 Nội dung đầy đủ đang được khóa. Nhập mật khẩu 1 lần duy nhất — trình duyệt sẽ tự nhớ.</p>
       <button class="cbtn" onclick="unlockFlow()">Nhập mật khẩu để mở</button>
     </div>`;
@@ -424,7 +500,7 @@ function toggleItem(head){
 }
 async function copyItem(key,withStd,btn){
   if(!CONTENT){ unlockFlow(); return; }
-  let text=CONTENT[key]||"";
+  let text=splitContent(key,CONTENT[key])||"";
   if(withStd&&CONTENT["P00"]) text=CONTENT["P00"]+"\n\n---\n\n"+text;
   try{ await navigator.clipboard.writeText(text); }
   catch(e){
