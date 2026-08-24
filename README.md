@@ -4,7 +4,7 @@ Trang tra cứu **82 assets** trong pack "AI prompts + skills for creative strat
 
 **27 Operator Skills** + **54 Prompts** (+1 khối Research Standards) cho DTC/ecom creative strategy: viết ads, research audience, phân tích performance, vận hành client.
 
-👉 **Xem trang tra cứu:** bật GitHub Pages (Settings → Pages → main branch) rồi truy cập `https://kaniris.github.io/jakob-creative-os/`
+👉 **Xem trang tra cứu:** https://kaniris.github.io/jakob-creative-os/
 
 ---
 
@@ -32,4 +32,4 @@ Trang tra cứu **82 assets** trong pack "AI prompts + skills for creative strat
 
 ---
 
-*Nội dung gốc thuộc về Jakob Counts. Repo này chỉ chứa bản mô tả/diễn giải tiếng Việt để tra cứu nội bộ — không chứa nội dung verbatim của pack.*
+*Nội dung gốc thuộc về Jakob Counts. Phần công khai của repo này chỉ chứa bản mô tả/diễn giải tiếng Việt để tra cứu nội bộ. Nội dung đầy đủ của pack nằm trong `content.enc.json` — được mã hóa AES-256-GCM (PBKDF2-SHA256, 200.000 vòng lặp) và chỉ mở được bằng mật khẩu riêng của chủ repo; không có mật khẩu thì không thể đọc.*
