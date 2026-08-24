@@ -148,6 +148,16 @@
   .note{margin-top:16px;background:#fffbec;border:1px solid #e8d9a8;border-radius:13px;padding:14px 17px;font-size:13px;color:#6b5310;line-height:1.6}
   footer{margin:70px 0 34px;text-align:center;color:var(--dim);font-size:12.5px;line-height:1.8}
   .hidden{display:none!important}
+  .totop{
+    position:fixed;right:22px;bottom:22px;z-index:60;
+    width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;
+    background:linear-gradient(135deg,#6d5122,#9a7534);color:#fff;
+    font-size:18px;line-height:1;font-family:inherit;
+    box-shadow:0 6px 18px rgba(109,81,34,.35);
+    opacity:0;visibility:hidden;transform:translateY(10px);transition:.25s;
+  }
+  .totop.show{opacity:1;visibility:visible;transform:translateY(0)}
+  .totop:hover{filter:brightness(1.15);transform:translateY(-2px)}
   @media (max-width:640px){ .sec-head .badge{display:none} .charcount{display:none} .toolbar{position:static} }
 </style>
 </head>
@@ -237,6 +247,8 @@
     nội dung đầy đủ được mã hóa AES-256 — chỉ mở được bằng mật khẩu của chủ thư viện · nội dung gốc thuộc về tác giả
   </footer>
 </div>
+
+<button class="totop" id="toTop" title="Về đầu trang" aria-label="Về đầu trang" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <div class="pw-overlay" id="pwOverlay" onclick="if(event.target===this)closePwModal()">
   <div class="pw-modal" id="pwModal">
@@ -623,6 +635,8 @@ function jumpToResult(){
 document.getElementById("q").addEventListener("input",apply);
 document.getElementById("q").addEventListener("keydown",e=>{ if(e.key==="Enter") jumpToResult(); });
 document.querySelectorAll(".fbtn").forEach(b=>{ if(b.dataset.f) b.addEventListener("click",()=>setFilter(b.dataset.f)); });
+const toTopBtn=document.getElementById("toTop");
+window.addEventListener("scroll",()=>{ toTopBtn.classList.toggle("show",window.scrollY>400); },{passive:true});
 apply();
 </script>
 </body>
